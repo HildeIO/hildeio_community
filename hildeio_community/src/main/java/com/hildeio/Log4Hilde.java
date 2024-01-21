@@ -39,14 +39,10 @@ public class Log4Hilde {
 		
 	/***********************************************************************************************
 	* 
-	* Peristierung der Logging-Informationen in der Tabelle [luidi_db].[log4hilde].
-	* Ueber das Property checkDebugMode (Model: Log4HildeModusRepository) ist in der Tabelle 
-	* log4Hilde_modus_model festgelegt ob diese Informationen geloggt werden. 
+	* <p style="color:green;font-weight:bold;size:28px">INFO-LEVEL</p>
 	* 
-	* Existiert in der Tabelle log4hilde_modus_model ein debug-Datensatz mit einem Wert true, wird 
-	* das Logging durchgefuehrt. Beim Wert false bzw. ist kein Datensatz vorhanden wird das 
-	* Logging ausgefuehrt.   
-	* 
+	* Persistieren der aktuellen Objekte aus den Methoden in der Tabelle [luidi_db].[log4hilde].
+	* 	* 
 	* @param logpoint Logging-Punkt in der Methode
 	* @param meldung Enhaelt die Werte von Variablen und/oder Model-Properties 
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
@@ -78,17 +74,8 @@ public class Log4Hilde {
 
 	/***********************************************************************************************
 	* 
-	* Peristierung der Exception-Informationen in der Tabelle loghHilde der luidi_db.
-	* ueber das Property checkDebugMode (Model: Log4HildeModusRepository) ist in der Tabelle 
-	* log4Hilde_modus_model festgelegt ob diese Exceptions auch per Push-Nachricht verschickt werden
-	* 
-	* Existiert in der Tabelle log4hilde_modus_model ein exceptionPush-Datensatz mit einem Wert true, 
-	* werden die Exceptions an eine definierte Topic zugestellt. Beim Wert false bzw. ist kein Datensatz    
-	* vorhanden wird die Exception nur geloggt und es wird keine Push-Nachricht verschickt.
-	* 
-	* Tritt waehrend der Ausfuehrung dieser Methode eine Exception (z. B. kein Zugriff auf die DB) auf, 
-	* wird versucht die Logging-Informationen in eine Log-Datei zu scheiben.
-	* 
+	* Persistieren der aktuellen Exception-Objekte in der Tabelle loghHilde der [luidi_db].[log4hilde].
+	*  
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
 	* @param exception Enhaelt die Exception-Message der Exception 
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
@@ -96,7 +83,7 @@ public class Log4Hilde {
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird  
 	* 
 	**********************************************************************************************/	
-	public void doErrorLog(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
+	private void doErrorLog(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
 		
 		try {
 						
@@ -138,7 +125,9 @@ public class Log4Hilde {
 
 	/***********************************************************************************************
 	* 
-	* Ruft die ueberladene Methode doErrorLog auf. Der history-Paramter wird fix gesetzt.
+	* <p style="color:red;font-weight:bold;size:28px">ERROR-LEVEL</p>
+	* 
+	* Öffentliche doErrorLog()-Methode im Falle einer Exception. 
 	*  
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
 	* @param exception Enhaelt die Exception-Message der Exception 
@@ -154,7 +143,7 @@ public class Log4Hilde {
 	
 	/***********************************************************************************************
 	* 
-	* Setzen der zentralen Logging-Informationen im log4HildeModel.
+	* Zusammenstellen der Logging-Informationen im log4HildeModel.
 	*  
 	* @param Zu befuellendes log4HildeModel   
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird
@@ -173,14 +162,42 @@ public class Log4Hilde {
 	
 	/***********************************************************************************************
 	* 
-	* Entscheidung ob DebugModus bzw. Verwsnden einer PushNachricht bei Exception.
-	* Feld 'modusName' muss derzeit einen folgenden Werte enthalten:
+	* <p>Enthaelt der Parameter modusName den Wert 'debug', wird geprueft, ob INFO-LEVEL aktiv ist.
+	* Standardmaessig ist das INFO-LEVEL aktiv. Um das INFO-LEVEL zu deaktivieren muss in 
+	* der Tabelle [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren:</p>  
+	* <p>
+	* <table>
+	*  <tr>
+	*   <td style="background-color:#e9ecee;">modusName</td>
+	*   <td style="background-color:#e9ecee;">modus_value</td>
+	*  </tr>
+	*  <tr>
+	*   <td style="border: 1px solid #e9ecee;font-width:bold;">debug</td>
+	*   <td style="border: 1px solid #e9ecee;font-width:bold;">0</td>
+	*  </tr>
+	* </table>
+	* </p>
 	* 
-	*    debug         = DebugModus (INFO wird geloggt)
-	*    exceptionPush = Versenden einer PushNachricht  
+	* <p>Enthaelt der Parameter modusName den Wert 'exceptionPush' wird bei einer Exception geprueft,
+	* ob PushNotification verschicken wird. Standardmaessig ist bei einer Exception die PushNotification aktiv.
+	* Um das das Versenden einer PushNotification zu deaktivieren muss in der Tabelle 
+	* [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren:</p>
+	* <p>
+	* <table>
+	*  <tr>
+	*   <td style="background-color:#e9ecee;">modusName</td>
+	*   <td style="background-color:#e9ecee;">modus_value</td>
+	*  </tr>
+	*  <tr>
+	*   <td style="border: 1px solid #e9ecee;font-width:bold;">exceptionPush</td>
+	*   <td style="border: 1px solid #e9ecee;font-width:bold;">0</td>
+	*  </tr>
+	* </table>
+	* </p>
 	* 
-	* @param modusName Name Steuerungsdatensatz
-	* @return Value Steuerungsdatensatz
+	* 
+	* @param modusName debug | exceptionPush
+	* @return true | false
 	* 
 	**********************************************************************************************/	
 	private Boolean checkDebugMode(String modusName) {

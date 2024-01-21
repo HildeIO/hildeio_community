@@ -277,11 +277,13 @@ dl.notes > dt {
     font-weight:bold;
     margin:10px 0 0 0;
     color:#4E4E4E;
+    overflow: auto;
 }
 dl.notes > dd {
     margin:5px 10px 10px 0;
     font-size:14px;
     font-family:'Open Sans', 'Trebuchet MS', Verdana, sans-serif, Arial, Helvetica, sans-serif;
+    overflow: auto;
 }
 dl.name-value > dt {
     margin-left:1px;
@@ -510,6 +512,7 @@ div.block {
     font-size:14px;
     margin:14px 0;
     white-space: pre-wrap;
+    overflow: auto;
 }
 .module-signature,
 .package-signature,
