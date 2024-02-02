@@ -126,7 +126,7 @@ public class Log4Hilde {
 	* 
 	* <p style="color:red;font-weight:bold;size:28px">ERROR-LEVEL</p>
 	* 
-	* Öffentliche doErrorLog()-Methode im Falle einer Exception. 
+	* Oeffentliche doErrorLog()-Methode im Falle einer Exception. 
 	*  
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
 	* @param exception Enhaelt die Exception-Message der Exception 

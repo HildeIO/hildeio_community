@@ -55,7 +55,7 @@ public class FbMessageTopicController {
 	
 	/***********************************************************************************************
 	 * 
-	 * DeviceToken aus einem Topic enfernen.
+	 * DeviceToken aus einem Topic entfernen.
 	 * 
 	 * @param fbMessageTopicModel DeviceTokens und Topic
 	 *    
