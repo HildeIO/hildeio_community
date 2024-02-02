@@ -19,12 +19,14 @@ import com.hildeio.models.Log4HildeModusModel;
 import com.hildeio.models.Log4HildePushNotificationModel;
 
 
-/**
+/***********************************************************************************************
+ * 
  * <P>Peristierung der Logging-Informationen in einer relationale Datenbank. HildeIO verwendet den Datenbankserver MariaDB. 
  * Die Logging-Datensaetze werden in der Tabelle [log4hilde] der Datenbank [luidi_db] gespeichert.</p>   
  * Hinweis:<br>
- * Alternativ zur MariaDB kann auch ein anderes relationales Datenbanksystem verwendet werden, wie PostgreSQL oder MSSQL.   
- */
+ * Alternativ zur MariaDB kann auch ein anderes relationales Datenbanksystem verwendet werden, wie PostgreSQL oder MSSQL.
+ *    
+ ***********************************************************************************************/
 @Component
 public class Log4Hilde {
 

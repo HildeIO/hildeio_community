@@ -14,6 +14,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+/***********************************************************************************************
+ * 
+ * REST-API zur Administration der Firebase Cloud Messaging Topics
+ *    
+ ***********************************************************************************************/
 @RestController
 @RequestMapping("/fcmTopic")
 @Tag(name = "Firebase Messaging Topic")
@@ -22,16 +27,25 @@ public class FbMessageTopicController {
 	public FbMessageTopicService fbMessageTopicService;
 
 	
-	/* *********************************************************************************************
-	 *
-	 * FbMessageTopicController
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Konstruktor
+	 * 
+	 * @param fbMessageTopicService Logik-Instanz der API 
+	 *    
+	 ***********************************************************************************************/
 	public FbMessageTopicController(FbMessageTopicService fbMessageTopicService) {
 		this.fbMessageTopicService = fbMessageTopicService;
 	}
 	
 	
+	/***********************************************************************************************
+	 * 
+	 * DeviceToken fuer ein Topic registrieren
+	 * 
+	 * @param fbMessageTopicModel DeviceTokens und Topic
+	 *    
+	 ***********************************************************************************************/
 	@PutMapping("/subscribeTopic")
 	@Operation(description = "Hinzufügen eines MobileDevice-Tokens zu einer Topic")
 	public String subscribeTopic(@RequestBody FbMessageTopicModel fbMessageTopicModel) {
@@ -39,6 +53,13 @@ public class FbMessageTopicController {
 	}
 	
 	
+	/***********************************************************************************************
+	 * 
+	 * DeviceToken aus einem Topic enfernen.
+	 * 
+	 * @param fbMessageTopicModel DeviceTokens und Topic
+	 *    
+	 ***********************************************************************************************/
 	@PutMapping("/unsubscribeTopic")
 	@Operation(description = "Entfernen eines MobileDevice-Tokens aus einer Topic")
 	public String unsubscribeTopic(@RequestBody FbMessageTopicModel fbMessageTopicModel) {
@@ -46,6 +67,13 @@ public class FbMessageTopicController {
 	}	
 	
 	
+	/***********************************************************************************************
+	 * 
+	 * Information in welchen Topics ein DeviceToken registriert ist und Zeitpunkt der Registrierung.
+	 * 
+	 * @param deviceToken registrationToken eines MobileDevices
+	 *    
+	 ***********************************************************************************************/
 	@GetMapping("/getTopicsOfDevice")
 	@Operation(description = "Information in welchen Topics ein DeviceToken registriert ist")
 	public String getTopicsOfDevice(
