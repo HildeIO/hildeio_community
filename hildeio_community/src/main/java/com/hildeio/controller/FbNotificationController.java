@@ -20,6 +20,11 @@ import com.hildeio.services.FbNotificationService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+/***********************************************************************************************
+ * 
+ * REST-API zum Versenden von PushNotifications
+ *    
+ ***********************************************************************************************/
 @RestController
 @RequestMapping("/fcmNotification")
 @Tag(name = "Notification")
@@ -32,11 +37,13 @@ public class FbNotificationController {
 	Log4Hilde log4Hilde;
 
 	
-	/* *********************************************************************************************
-	*
-	* send2Topic
-	* 
-	* ********************************************************************************************/
+	/***********************************************************************************************
+	 * 
+	 * Versenden einer PushNotification an ein bestimmtes Topic
+	 * 
+	 * @param fbMessageModel TopicName, Message-Title und Message-Body
+	 *    
+	 ***********************************************************************************************/
 	@PostMapping("/send2Topic")
 	@Operation(description = "Versenden einer Push-Nachricht an ein bestimmtes Topic")
 	public ResponseEntity<String> send2Topic(@RequestBody FbMessageModel fbMessageModel) {
@@ -46,11 +53,13 @@ public class FbNotificationController {
 	}	
 
 	
-	/* *********************************************************************************************
-	*
-	* send2Device
-	* 
-	* ********************************************************************************************/
+	/***********************************************************************************************
+	 * 
+	 * Versenden einer PushNotification an ein bestimmtes MobileDevice
+	 * 
+	 * @param fbMessageModel DeviceToken, Message-Title und Message-Body
+	 *    
+	 ***********************************************************************************************/
 	@PostMapping("/send2Device")
 	@Operation(description = "Versenden einer Push-Nachricht an ein bestimmtes MobileDevice")
 	public ResponseEntity<String> send2Device(@RequestBody FbMessageModel fbMessageModel) {
@@ -59,11 +68,13 @@ public class FbNotificationController {
 	}	
 			
 	
-	/* *********************************************************************************************
-	*
-	* send
-	* 
-	* ********************************************************************************************/
+	/***********************************************************************************************
+	 * 
+	 * Ausführen der zentralen Send-Methode
+	 * 
+	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body
+	 *    
+	 ***********************************************************************************************/
 	private ResponseEntity<String> send(FbMessageModel fbMessageModel) {
 		
 		String eventId = UUID.randomUUID().toString();
