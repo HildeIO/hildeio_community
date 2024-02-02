@@ -117,8 +117,8 @@ public class Log4Hilde {
 			
 		} catch(Exception exception_doErrorLog) {
 
-			this.write2File(logpoint, exception, json, eventId, history + 1);
-			this.write2File("EX-1", exception_doErrorLog, new JSONObject(), eventId, 5);
+			this.printError(logpoint, exception, json, eventId, history + 1);
+			this.printError("EX-1", exception_doErrorLog, new JSONObject(), eventId, 5);
 		}
 	}
 
@@ -227,7 +227,7 @@ public class Log4Hilde {
 	
 	/***********************************************************************************************
 	* 
-	* Fehlermeldung in Log-Datei schreiben, wenn DB nicht verfuegbar ist.
+	* Fehlermeldung ausgeben.
 	* 
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
 	* @param exception Enhaelt die Exception-Message der Exception 
@@ -236,53 +236,24 @@ public class Log4Hilde {
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird  
 	* 
 	**********************************************************************************************/	
-	private void write2File(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
+	private void printError(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
 		
 		try {
-			
-			String loggingFile = "\\\\192.168.188.73\\hilde\\files\\logging.log";
-			
+						
 			Log4HildeModel log4HildeModel = this.createExceptionModel(logpoint, exception, json, eventId, history);
 			
-			FileWriter fileWriter = new FileWriter(loggingFile, true);
-		    BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
-		    
-		    bufferedWriter.write("Logtime: " + log4HildeModel.getLogtime().toString());
-		    bufferedWriter.newLine();
+		    System.out.println("Logtime: " + log4HildeModel.getLogtime().toString());
+		    System.out.println("Logpoint: " + log4HildeModel.getLogpoint());
+		    System.out.println("Klasse: " + log4HildeModel.getKlasse());
+		    System.out.println("Methode: " + log4HildeModel.getMethode());
+		    System.out.println("Meldung: " + log4HildeModel.getMeldung());
+		    System.out.println("Exception: " + log4HildeModel.getException());
+		    System.out.println("Stacktrace: " + log4HildeModel.getStackTrace());
+		    System.out.println("Kategorie: " + log4HildeModel.getKategorie().toString());
+		    System.out.println("EventId: " + log4HildeModel.getEventId().toString());
+		    System.out.println("Objects: " + log4HildeModel.getObjekte());	    
 
-		    bufferedWriter.write("Logpoint: " + log4HildeModel.getLogpoint());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Klasse: " + log4HildeModel.getKlasse());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Methode: " + log4HildeModel.getMethode());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Meldung: " + log4HildeModel.getMeldung());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Exception: " + log4HildeModel.getException());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Stacktrace: " + log4HildeModel.getStackTrace());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Kategorie: " + log4HildeModel.getKategorie().toString());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("EventId: " + log4HildeModel.getEventId().toString());
-		    bufferedWriter.newLine();
-
-		    bufferedWriter.write("Objects: " + log4HildeModel.getObjekte());	    
-		    bufferedWriter.newLine();
-		    
-		    bufferedWriter.write("------------------------------    ENDE    ------------------------------");
-		    bufferedWriter.newLine();
-		    
-		    bufferedWriter.close();
-
-		} catch (IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}	    
 	}
