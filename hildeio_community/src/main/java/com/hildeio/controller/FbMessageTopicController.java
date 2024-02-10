@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zur Administration der Firebase Cloud Messaging Topics
+ * REST-API zur Administration der Firebase Cloud Messaging Topics.
  *    
  ***********************************************************************************************/
 @RestController
@@ -31,7 +31,7 @@ public class FbMessageTopicController {
 	 * 
 	 * Konstruktor
 	 * 
-	 * @param fbMessageTopicService Logik-Instanz der API 
+	 * @param fbMessageTopicService Logik-Instanz der API.
 	 *    
 	 ***********************************************************************************************/
 	public FbMessageTopicController(FbMessageTopicService fbMessageTopicService) {
@@ -43,7 +43,7 @@ public class FbMessageTopicController {
 	 * 
 	 * DeviceToken fuer ein Topic registrieren
 	 * 
-	 * @param fbMessageTopicModel DeviceTokens und Topic
+	 * @param fbMessageTopicModel DeviceTokens und Topic.
 	 *    
 	 ***********************************************************************************************/
 	@PutMapping("/subscribeTopic")
@@ -57,7 +57,7 @@ public class FbMessageTopicController {
 	 * 
 	 * DeviceToken aus einem Topic entfernen.
 	 * 
-	 * @param fbMessageTopicModel DeviceTokens und Topic
+	 * @param fbMessageTopicModel DeviceTokens und Topic.
 	 *    
 	 ***********************************************************************************************/
 	@PutMapping("/unsubscribeTopic")
@@ -71,7 +71,7 @@ public class FbMessageTopicController {
 	 * 
 	 * Information in welchen Topics ein DeviceToken registriert ist und Zeitpunkt der Registrierung.
 	 * 
-	 * @param deviceToken registrationToken eines MobileDevices
+	 * @param deviceToken registrationToken eines MobileDevices.
 	 *    
 	 ***********************************************************************************************/
 	@GetMapping("/getTopicsOfDevice")

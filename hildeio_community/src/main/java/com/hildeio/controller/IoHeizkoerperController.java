@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zur Heizkoerper-Steuerung (von der HomeMatic CCU)
+ * REST-API zur Heizkoerper-Steuerung.
  *    
  ***********************************************************************************************/
 @RestController
@@ -31,7 +31,7 @@ public class IoHeizkoerperController {
 	 * 
 	 * Konstruktor
 	 * 
-	 * @param ioHeizkoerperService Logik-Instanz der API 
+	 * @param ioHeizkoerperService Logik-Instanz der API. 
 	 *    
 	 ***********************************************************************************************/
 	public IoHeizkoerperController(IoHeizkoerperService ioHeizkoerperService) {
@@ -41,9 +41,9 @@ public class IoHeizkoerperController {
 	
 	/***********************************************************************************************
 	 * 
-	 * DeviceToken fuer ein Topic registrieren
+	 * DeviceToken fuer ein Topic registrieren.
 	 * 
-	 * @param ioHeizkoerperModel Steuerungswerte von der HomeMatic CCU
+	 * @param ioHeizkoerperModel Steuerungswerte von der HomeMatic CCU.
 	 *    
 	 ***********************************************************************************************/		
 	@PutMapping("/updateHeizkoerper2Firestore")
@@ -55,7 +55,7 @@ public class IoHeizkoerperController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Zyklischer Aufruf der Wochenplan-Logik durch die HomeMatic CCU
+	 * Zyklischer Aufruf der Wochenplan-Logik durch die HomeMatic CCU.
 	 * 
 	 ***********************************************************************************************/		
 	@PutMapping("/checkWochenplan")

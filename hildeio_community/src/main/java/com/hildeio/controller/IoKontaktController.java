@@ -19,6 +19,11 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.Parameter;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
+/***********************************************************************************************
+ * 
+ * REST-API zur Änderung der Stati von Tür-/Fensterkontakten.
+ *    
+ ***********************************************************************************************/
 @RestController
 @RequestMapping("/kontakte")
 @Tag(name = "Kontakte")
@@ -27,23 +32,27 @@ public class IoKontaktController {
 	public IoKontaktService ioKontakteService;
  
 	 
-	/* *********************************************************************************************
-	 *
-	 * IoKontakteController
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Konstruktor
+	 * 
+	 * @param ioKontakteService Logik-Instanz der API.
+	 *    
+	 ***********************************************************************************************/	
 	public IoKontaktController(IoKontaktService ioKontakteService) {
 		this.ioKontakteService = ioKontakteService;
 	} 
 	
 
-	/* *********************************************************************************************
-	 *
-	 * GET
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Aktueller Status von Kontakt {iseId} aus Firestore-Collection ioKontakte.
+	 * 
+	 * @param iseId Channel-ID des Tür- bzw. Fensterkontakts.
+	 *    
+	 ***********************************************************************************************/		
 	@GetMapping("/get/{iseId}")
-	@Operation(description = "Aktuellen Status von Kontakt {iseId} aus Firestore-Collection ioKontakte")
+	@Operation(description = "Aktueller Status von Kontakt {iseId} aus Firestore-Collection ioKontakte")
 	public IoKontaktModel getKontakt(
 			@Parameter(description = "Channel-ID des Tür- bzw. Fensterkontakts", example = "58429", required = true) 
 			@PathVariable 
@@ -53,25 +62,13 @@ public class IoKontaktController {
 	}
 
 	
-	/* *********************************************************************************************
-	 *
-	 * CREATE
+	/***********************************************************************************************
 	 * 
-	 *
-	   !HomeMatic-Beispiel - CREATE:
-	 
-	 	string ise_id = "21121977";
-		string seriennummer = "123456";
-		string bezeichnung = "bezeichnung_test";
-		
-		string kontakt_controller= "http://192.168.188.87:8080/channels";
-		
-		string curl = "curl -X POST -H \"Content-Type: application/json\" "#kontakt_controller#" -d '{\"ise_id\":"#ise_id #",\"seriennummer\":\""#seriennummer#"\",\"bezeichnung\":\""#bezeichnung#"\"}'";
-		
-		dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State(curl);
-		WriteLine (curl);
-	 *
-	 * ********************************************************************************************/	
+	 * Neuen Kontakt mit Status in Firestore-Collection ioKontakte anlegen.
+	 * 
+	 * @param ioKontakteModel Name, Channel-ID und Status des Kontakts.
+	 *    
+	 ***********************************************************************************************/			
 	@PostMapping("/create")
 	@Operation(description = "Neuen Kontakt mit Status in Firestore-Collection ioKontakte anlegen")
 	public String createKontakt(@RequestBody IoKontaktModel ioKontakteModel) throws InterruptedException, ExecutionException {
@@ -79,27 +76,13 @@ public class IoKontaktController {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * UPDATE
+	/***********************************************************************************************
 	 * 
-	 *
-	 	!HomeMatic - PUT:
-	 	!Programm: Fensterkontakte (Firebase)
-	 	
-		object aktuellesDevice = dom.GetObject("$src$").Device();
-		
-		string iseId = dom.GetObject(aktuellesDevice).ID();
-		string kontaktName = dom.GetObject(aktuellesDevice).Name();
-		string kontaktValue = dom.GetObject(aktuellesDevice).State().ToString();
-		
-		string kontakt_controller= dom.GetObject(ID_SYSTEM_VARIABLES).Get("HildeIO").State() + "kontakte/update";
-		
-		string curl = "curl -X PUT -H \"Content-Type: application/json\" "#kontakt_controller#" -d '{\"iseId\":"#iseId #",\"kontaktName\":\""#kontaktName#"\",\"kontaktValue\":\""#kontaktValue#"\"}'";
-		
-		dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State(curl);
-	 *
-	 * ********************************************************************************************/	
+	 * Status von Kontakt in Firestore-Collection ioKontake aktualisieren.
+	 * 
+	 * @param ioKontakteModel Name, Channel-ID und Status des Kontakts.
+	 *    
+	 ***********************************************************************************************/			
 	@PutMapping("/update")
 	@Operation(description = "Status von Kontakt in Firestore-Collection ioKontake aktualisieren")
 	public String updateKontakt(@RequestBody IoKontaktModel ioKontakteModel) throws InterruptedException, ExecutionException {
@@ -107,21 +90,13 @@ public class IoKontaktController {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * DELETE
+	/***********************************************************************************************
 	 * 
-	 *
- 		!HomeMatic-Beispiel - DELETE:
- 		
-		string kontakt_controller= "http://192.168.188.87:8080/channels/3001";
-		
-		string curl = "curl -X DELETE -H \"Content-Type: application/json\" "#kontakt_controller#"";
-		
-		dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State(curl);
-		WriteLine (curl);
-	 *
-	 * ********************************************************************************************/	
+	 * Kontakt {iseId} aus Firestore-Collection ioKontakte löschen.
+	 * 
+	 * @param iseId Channel-ID des Tür- bzw. Fensterkontakts.
+	 *    
+	 ***********************************************************************************************/				
 	@DeleteMapping("/delete/{iseId}")
 	@Operation(description = "Kontakt {iseId} aus Firestore-Collection ioKontakte löschen")
 	public String deleteKontakt(
@@ -131,20 +106,11 @@ public class IoKontaktController {
 	}
 	
 
-	/* *********************************************************************************************
-	 *
-	 * checkKontakteOffen
+	/***********************************************************************************************
 	 * 
-	 	!HomeMatic - checkKontakteOffen:
-	 	
-		string kontakt_controller= string kontakt_controller= dom.GetObject(ID_SYSTEM_VARIABLES).Get("HildeIO").State() + "kontakte/checkKontakteOffen";
-		
-		string curl = "curl -X GET -H \"Content-Type: application/json\" "#kontakt_controller#"";
-		
-		dom.GetObject("CUxD.CUX2801001:1.CMD_EXEC").State(curl);
-		WriteLine (curl);
-	 *
-	 * ********************************************************************************************/		
+	 * Prüfen der aktuellen Stati und ggfs. Versenden einer Push-Nachricht.
+	 *    
+	 ***********************************************************************************************/					
 	@GetMapping("/checkKontakteOffen")
 	@Operation(description = "Prüfen der aktuellen Stati und ggfs. Versenden einer Push-Nachricht")
 	public void checkKontakteOffen() throws InterruptedException, ExecutionException {

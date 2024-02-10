@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zum Versenden von PushNotifications
+ * REST-API zum Versenden von PushNotifications.
  *    
  ***********************************************************************************************/
 @RestController
@@ -39,9 +39,9 @@ public class FbNotificationController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Versenden einer PushNotification an ein bestimmtes Topic
+	 * Versenden einer PushNotification an ein bestimmtes Topic.
 	 * 
-	 * @param fbMessageModel TopicName, Message-Title und Message-Body
+	 * @param fbMessageModel TopicName, Message-Title und Message-Body.
 	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Topic")
@@ -55,9 +55,9 @@ public class FbNotificationController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Versenden einer PushNotification an ein bestimmtes MobileDevice
+	 * Versenden einer PushNotification an ein bestimmtes MobileDevice.
 	 * 
-	 * @param fbMessageModel DeviceToken, Message-Title und Message-Body
+	 * @param fbMessageModel DeviceToken, Message-Title und Message-Body.
 	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Device")
@@ -70,9 +70,9 @@ public class FbNotificationController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Ausführen der zentralen Send-Methode
+	 * Ausführen der zentralen Send-Methode.
 	 * 
-	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body
+	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body.
 	 *    
 	 ***********************************************************************************************/
 	private ResponseEntity<String> send(FbMessageModel fbMessageModel) {
