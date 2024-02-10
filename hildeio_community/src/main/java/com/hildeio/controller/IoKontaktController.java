@@ -21,7 +21,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zur Änderung der Stati von Tür-/Fensterkontakten.
+ * REST-API zur Aenderung der Stati von Tuer- und Fensterkontakten.
  *    
  ***********************************************************************************************/
 @RestController
@@ -48,7 +48,7 @@ public class IoKontaktController {
 	 * 
 	 * Aktueller Status von Kontakt {iseId} aus Firestore-Collection ioKontakte.
 	 * 
-	 * @param iseId Channel-ID des Tür- bzw. Fensterkontakts.
+	 * @param iseId Channel-ID des Tuer- bzw. Fensterkontakts.
 	 *    
 	 ***********************************************************************************************/		
 	@GetMapping("/get/{iseId}")
@@ -92,9 +92,9 @@ public class IoKontaktController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Kontakt {iseId} aus Firestore-Collection ioKontakte löschen.
+	 * Kontakt {iseId} aus Firestore-Collection ioKontakte loeschen.
 	 * 
-	 * @param iseId Channel-ID des Tür- bzw. Fensterkontakts.
+	 * @param iseId Channel-ID des Tuer- bzw. Fensterkontakts.
 	 *    
 	 ***********************************************************************************************/				
 	@DeleteMapping("/delete/{iseId}")
@@ -108,7 +108,7 @@ public class IoKontaktController {
 
 	/***********************************************************************************************
 	 * 
-	 * Prüfen der aktuellen Stati und ggfs. Versenden einer Push-Nachricht.
+	 * Pruefen der aktuellen Stati und ggfs. Versenden einer Push-Nachricht.
 	 *    
 	 ***********************************************************************************************/					
 	@GetMapping("/checkKontakteOffen")

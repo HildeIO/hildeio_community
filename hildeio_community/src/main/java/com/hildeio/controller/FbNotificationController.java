@@ -70,7 +70,7 @@ public class FbNotificationController {
 	
 	/***********************************************************************************************
 	 * 
-	 * Ausführen der zentralen Send-Methode.
+	 * Ausfuehren der zentralen Send-Methode.
 	 * 
 	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body.
 	 *    

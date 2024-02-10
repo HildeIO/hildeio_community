@@ -144,7 +144,7 @@ public class Log4Hilde {
 	* 
 	* Zusammenstellen der Logging-Informationen im log4HildeModel.
 	*  
-	* @param Zu befuellendes log4HildeModel   
+	* @param log4HildeModel Zu befuellendes log4HildeModel   
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird
 	* @return Vorgefuelltes log4HildeModel   
 	* 
@@ -214,7 +214,7 @@ public class Log4Hilde {
 	* 
 	* Formattierung des Methoden-Namens. Package-Namen werden entfernt.
 	* 
-	* @param Vollstaendiger Methoden-Name
+	* @param klasse Vollstaendiger Methoden-Name
 	* @return Gekuerzter Methoden-Name
 	* 
 	**********************************************************************************************/	

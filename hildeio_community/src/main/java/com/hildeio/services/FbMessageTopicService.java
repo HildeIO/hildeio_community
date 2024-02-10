@@ -18,17 +18,24 @@ import com.hildeio.Log4Hilde;
 import com.hildeio.firebase.FbConfiguration;
 import com.hildeio.models.FbMessageTopicModel;
 
+/***********************************************************************************************
+ * 
+ * Administration der Firebase Cloud Messaging Topics.
+ *    
+ ***********************************************************************************************/
 @Service
 public class FbMessageTopicService {
 
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-	/* *********************************************************************************************
-	 *
-	 * Hinzufügen eines MobileDevice-Tokens zu einem Topic
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Hinzufuegen eines MobileDevice-Tokens zu einem Topic.
+	 * 
+	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 *    
+	 ***********************************************************************************************/	
 	public String subscribeTopic(FbMessageTopicModel fbMessageTopicModel) {
 		
 		try {
@@ -46,11 +53,14 @@ public class FbMessageTopicService {
 		}				
 	}
 	
-	/* *********************************************************************************************
-	 *
-	 * Entfernen eines MobileDevice-Tokens aus einem Topic
+	
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Entfernen eines MobileDevice-Tokens aus einem Topic.
+	 * 
+	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 *    
+	 ***********************************************************************************************/	
 	public String unsubscribeTopic(FbMessageTopicModel fbMessageTopicModel) {
 		
 		try {
@@ -67,12 +77,16 @@ public class FbMessageTopicService {
 			return exception.getMessage();
 		}		
 	}
+
 	
-	/* *********************************************************************************************
-	*
-	* getTopicsOfDevice
-	* 
-	* ********************************************************************************************/		
+	/***********************************************************************************************
+	 * 
+	 * Rueckgabe aller Topics (im JSON-Format) in denen der DeviceToken registriert ist. Enhalten ist 
+	 * auch der Timestamp wann der DeviceToken registriert wurde.
+	 * 
+	 * @param deviceToken DeviceToken
+	 *    
+	 ***********************************************************************************************/	
 	public String getTopicsOfDevice(String deviceToken) {
 
 		try {

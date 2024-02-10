@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zur Änderung der Stati von Schaltaktoren.
+ * REST-API zur Aenderung der Stati von Schaltaktoren.
  *    
  ***********************************************************************************************/
 @RestController
