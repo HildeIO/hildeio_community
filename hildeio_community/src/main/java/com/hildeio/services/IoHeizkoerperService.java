@@ -28,22 +28,49 @@ import com.hildeio.homematic.HmEventManager;
 import com.hildeio.models.IoHeizkoerperModel;
 import com.hildeio.models.IoWochenplanModel;
 
+/***********************************************************************************************
+ * 
+ * Service zur Steuerung der Heizkoerper.
+ *    
+ ***********************************************************************************************/
 @Service
 public class IoHeizkoerperService {
 
+	/***********************************************************************************************
+	 * 
+	 * KONSTANTEN fuer Firestore Collections ioHeizkoerper
+	 *    
+	 ***********************************************************************************************/	
 	final static String COLLECTION_HEIZKOERPER = "ioHeizkoerper";
+
+	
+	/***********************************************************************************************
+	 * 
+	 * KONSTANTEN fuer Firestore Collections ioWochenplan
+	 *    
+	 ***********************************************************************************************/	
 	final static String COLLECTION_WOCHENPLAN = "ioWochenplan";
 	
+	
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-//ToDo: in HildeApp muss setChangedBy("MOBILE") immer gesetzt werden!!!
 	
-	/* *********************************************************************************************
-	 *
-	 * UPDATE: Homematic -> Firestore
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Geaenderte Werte von der HomeMatic CCU an => Firestore-Collection ioHeizkoerper uebertragen.
+	 * 
+	 * 
+	 * @param ioHeizkoerperModel Werte des HeizkoerperAkteurs 
+	 * @param eventId Aktuelle WorkflowId
+	 * @return Aenderungsdatum (String) des Heizkoerper-Dokuments in ioHeizkoerper. 
+	 *    
+	 ***********************************************************************************************/	
 	public String updateHeizkoerper2Firestore(IoHeizkoerperModel ioHeizkoerperModel, String eventId) {
 		
 		try {
@@ -100,11 +127,17 @@ public class IoHeizkoerperService {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * updateModel
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Ermitteln der aktuellen Werte des zu aenderden Dokuments. Bestimmte Felder werden in
+	 * dem ioHeizkoerperModel wieder gesetzt.
+	 * 
+	 * 
+	 * @param ioHeizkoerperModel Werte des HeizkoerperAkteurs 
+	 * @param eventId Aktuelle WorkflowId
+	 * @return aktualisiertes ioHeizkoerperModel. 
+	 *    
+	 ***********************************************************************************************/	
 	private IoHeizkoerperModel updateModel(IoHeizkoerperModel ioHeizkoerperModel, String eventId) {
 
 		try {
@@ -154,11 +187,16 @@ public class IoHeizkoerperService {
 		}		
 	}
 	
-	/* *********************************************************************************************
-	 *
-	 * UPDATE: Firestore -> Homematic
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Geaenderte Werte aus der Firestore-Collection ioHeizkoerper werden an => die HomeMatic CCU an 
+	 * uebertragen.
+	 * 
+	 * @param document Werte des ioHeizkoerper-Dokuments.
+	 * @param log4Hilde Logging-Instanz 
+	 * @param eventId Aktuelle WorkflowId
+	 *    
+	 ***********************************************************************************************/	
 	public void update2Homematic(QueryDocumentSnapshot document, Log4Hilde log4Hilde, String eventId) {
 		
 		try {
@@ -223,11 +261,16 @@ public class IoHeizkoerperService {
 	}	
 
 	
-	/* *********************************************************************************************
-	 *
-	 * getTemperaturSollWochenplan
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Ermittlung der Solltemperatur, die in der Firestore Collection ioWochenplan hinterlegt ist. 
+	 * 
+	 * @param iseId Channel-ID Heizkoerpers
+	 * @param log4Hilde Logging-Instanz 
+	 * @param eventId Aktuelle WorkflowId
+	 * @return Solltemperatur (String) aus ioWochenplan.
+	 *    
+	 ***********************************************************************************************/	
 	private String getTemperaturSollWochenplan(String iseId, Log4Hilde log4Hilde, String eventId) {
 		
 		try {
@@ -292,11 +335,16 @@ public class IoHeizkoerperService {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * checkWochenplan
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Zyklischer Aufruf von der HomeMatic CCU zur Ermmittlung der Solltemperatur aus ioWochenplan.
+	 * Wird in ioWochenplan ein passendes Dokument gefunden, wird das Dokument in ioHeizkoerper 
+	 * entsprechend modifiziert.
+	 * 
+	 * @param eventId Aktuelle WorkflowId
+	 * @return Erledigtmeldung / Fehlermeldung
+	 *    
+	 ***********************************************************************************************/	
 	public String checkWochenplan(String eventId) {
 		
 		try {

@@ -20,7 +20,7 @@ import com.hildeio.models.FbMessageTopicModel;
 
 /***********************************************************************************************
  * 
- * Administration der Firebase Cloud Messaging Topics.
+ * Administrations-Service fuer FCM Topics.
  *    
  ***********************************************************************************************/
 @Service

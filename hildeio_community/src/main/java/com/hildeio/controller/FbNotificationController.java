@@ -22,7 +22,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zum Versenden von PushNotifications.
+ * REST-API zum Versenden von FCM PushNotifications.
  *    
  ***********************************************************************************************/
 @RestController

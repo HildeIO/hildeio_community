@@ -16,17 +16,29 @@ import com.hildeio.Log4Hilde;
 import com.hildeio.firebase.FbConfiguration;
 import com.hildeio.models.Log4HildePushNotificationModel;
 
+/***********************************************************************************************
+ * 
+ * Service zum Versenden von FCM PushNotifications.
+ *    
+ ***********************************************************************************************/
 @Service
 public class FbNotificationService {
 
 	@Autowired
 	Log4Hilde log4Hilde;
 
-	/* *********************************************************************************************
-	*
-	* sendPushNotification
-	* 
-	* ********************************************************************************************/		
+	/***********************************************************************************************
+	 * 
+	 * Hinzufuegen eines MobileDevice-Tokens zu einem FCM Topic.
+	 * 
+	 * @param target Empfaenger kann ein MobileDevice oder ein FCM Topic sein. 
+	 * @param title Betreff der Nachricht
+	 * @param body Text der Nachricht
+	 * @param eventId Aktuelle WorkflowId
+	 * @return log4HildePushNotificationModel
+	 * @throws IOException Erforderliche Exception.
+	 *    
+	 ***********************************************************************************************/	
 	public Log4HildePushNotificationModel sendPushNotification(String target, String title, String body, String eventId) throws IOException {
 
 		try {
