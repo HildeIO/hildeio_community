@@ -25,6 +25,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Meldung")
 public class IoMeldungController {
 
+	/***********************************************************************************************
+	 * 
+	 * Instanzvariable für Service
+	 *    
+	 ***********************************************************************************************/
 	public IoMeldungService ioMeldungService;
 
 	
@@ -45,6 +50,9 @@ public class IoMeldungController {
 	 * Neue Servicemeldung aus der HomeMatic in Firestore-Collection ioMeldungen anlegen.
 	 * 
 	 * @param ioMeldungModels Name, Nachricht, Kategorie und Timestamp.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/			
 	@PostMapping("/create")

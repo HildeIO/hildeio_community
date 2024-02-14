@@ -29,6 +29,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Kontakte")
 public class IoKontaktController {
 
+	/***********************************************************************************************
+	 * 
+	 * Instanzvariable für Service
+	 *    
+	 ***********************************************************************************************/
 	public IoKontaktService ioKontakteService;
  
 	 
@@ -49,6 +54,9 @@ public class IoKontaktController {
 	 * Aktueller Status von Kontakt {iseId} aus Firestore-Collection ioKontakte.
 	 * 
 	 * @param iseId Channel-ID des Tuer- bzw. Fensterkontakts.
+	 * @return Werte des aktullen Tuer- bzw. Fensterkontakts.
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/		
 	@GetMapping("/get/{iseId}")
@@ -67,6 +75,9 @@ public class IoKontaktController {
 	 * Neuen Kontakt mit Status in Firestore-Collection ioKontakte anlegen.
 	 * 
 	 * @param ioKontakteModel Name, Channel-ID und Status des Kontakts.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/			
 	@PostMapping("/create")
@@ -81,6 +92,9 @@ public class IoKontaktController {
 	 * Status von Kontakt in Firestore-Collection ioKontake aktualisieren.
 	 * 
 	 * @param ioKontakteModel Name, Channel-ID und Status des Kontakts.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/			
 	@PutMapping("/update")
@@ -95,6 +109,9 @@ public class IoKontaktController {
 	 * Kontakt {iseId} aus Firestore-Collection ioKontakte loeschen.
 	 * 
 	 * @param iseId Channel-ID des Tuer- bzw. Fensterkontakts.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/				
 	@DeleteMapping("/delete/{iseId}")
@@ -109,6 +126,9 @@ public class IoKontaktController {
 	/***********************************************************************************************
 	 * 
 	 * Pruefen der aktuellen Stati und ggfs. Versenden einer Push-Nachricht.
+	 * 
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/					
 	@GetMapping("/checkKontakteOffen")

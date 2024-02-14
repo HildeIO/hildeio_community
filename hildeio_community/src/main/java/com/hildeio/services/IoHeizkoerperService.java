@@ -38,7 +38,7 @@ public class IoHeizkoerperService {
 
 	/***********************************************************************************************
 	 * 
-	 * KONSTANTEN fuer Firestore Collections ioHeizkoerper
+	 * KONSTANTE fuer Firestore Collections ioHeizkoerper
 	 *    
 	 ***********************************************************************************************/	
 	final static String COLLECTION_HEIZKOERPER = "ioHeizkoerper";
@@ -46,7 +46,7 @@ public class IoHeizkoerperService {
 	
 	/***********************************************************************************************
 	 * 
-	 * KONSTANTEN fuer Firestore Collections ioWochenplan
+	 * KONSTANTE fuer Firestore Collections ioWochenplan
 	 *    
 	 ***********************************************************************************************/	
 	final static String COLLECTION_WOCHENPLAN = "ioWochenplan";
@@ -189,7 +189,7 @@ public class IoHeizkoerperService {
 	
 	/***********************************************************************************************
 	 * 
-	 * Geaenderte Werte aus der Firestore-Collection ioHeizkoerper werden an => die HomeMatic CCU an 
+	 * Geaenderte Werte aus der Firestore-Collection ioHeizkoerper werden an => die HomeMatic CCU  
 	 * uebertragen.
 	 * 
 	 * @param document Werte des ioHeizkoerper-Dokuments.

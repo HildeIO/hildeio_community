@@ -3,12 +3,25 @@ package com.hildeio.models;
 import lombok.Getter;
 import lombok.Setter;
 
+/***********************************************************************************************
+ * 
+ * Model HmLoginRequestParamsModel
+ *    
+ ***********************************************************************************************/
 @Getter
 @Setter
 public class HmLoginRequestParamsModel {
 
-	private String username;
 	
+	/***********************************************************************************************
+	 * Benutzername (Adminbenutzer) der HomeMatic CCU
+	 ***********************************************************************************************/
+	private String username;
+
+	
+	/***********************************************************************************************
+	 * Passwort (Adminbenutzer) der HomeMatic CCU
+	 ***********************************************************************************************/
 	private String password;
 }
 

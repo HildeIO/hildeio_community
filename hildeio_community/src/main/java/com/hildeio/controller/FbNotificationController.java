@@ -30,9 +30,19 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Notification")
 public class FbNotificationController {
 	
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection für Service
+	 *    
+	 ***********************************************************************************************/
 	@Autowired
 	FbNotificationService fcmNotificationService;
 
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 
@@ -42,6 +52,7 @@ public class FbNotificationController {
 	 * Versenden einer PushNotification an ein bestimmtes Topic.
 	 * 
 	 * @param fbMessageModel TopicName, Message-Title und Message-Body.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Topic")
@@ -58,6 +69,7 @@ public class FbNotificationController {
 	 * Versenden einer PushNotification an ein bestimmtes MobileDevice.
 	 * 
 	 * @param fbMessageModel DeviceToken, Message-Title und Message-Body.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Device")
@@ -73,6 +85,7 @@ public class FbNotificationController {
 	 * Ausfuehren der zentralen Send-Methode.
 	 * 
 	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	private ResponseEntity<String> send(FbMessageModel fbMessageModel) {

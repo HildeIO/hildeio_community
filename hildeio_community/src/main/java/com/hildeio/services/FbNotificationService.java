@@ -24,6 +24,11 @@ import com.hildeio.models.Log4HildePushNotificationModel;
 @Service
 public class FbNotificationService {
 
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 

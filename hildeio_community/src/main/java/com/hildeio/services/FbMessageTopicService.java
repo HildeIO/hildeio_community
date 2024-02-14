@@ -26,6 +26,11 @@ import com.hildeio.models.FbMessageTopicModel;
 @Service
 public class FbMessageTopicService {
 
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
@@ -34,6 +39,7 @@ public class FbMessageTopicService {
 	 * Hinzufuegen eines MobileDevice-Tokens zu einem Topic.
 	 * 
 	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/	
 	public String subscribeTopic(FbMessageTopicModel fbMessageTopicModel) {
@@ -59,6 +65,7 @@ public class FbMessageTopicService {
 	 * Entfernen eines MobileDevice-Tokens aus einem Topic.
 	 * 
 	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/	
 	public String unsubscribeTopic(FbMessageTopicModel fbMessageTopicModel) {
@@ -85,6 +92,7 @@ public class FbMessageTopicService {
 	 * auch der Timestamp wann der DeviceToken registriert wurde.
 	 * 
 	 * @param deviceToken DeviceToken
+	 * @return Liste der Topics mit Timestamp (JSON)
 	 *    
 	 ***********************************************************************************************/	
 	public String getTopicsOfDevice(String deviceToken) {

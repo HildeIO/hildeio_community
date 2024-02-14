@@ -17,20 +17,41 @@ import com.google.firebase.cloud.FirestoreClient;
 import com.hildeio.Log4Hilde;
 import com.hildeio.models.IoMeldungModel;
 
+/***********************************************************************************************
+ * 
+ * Service Anzeige der Servicemeldungen aus der HomeMatic CCU 
+ *    
+ ***********************************************************************************************/
 @Service
 public class IoMeldungService {
 
+	/***********************************************************************************************
+	 * 
+	 * KONSTANTE fuer Firestore Collections ioMeldungen
+	 *    
+	 ***********************************************************************************************/	
 	final static String COLLECTION = "ioMeldungen";
 	
+	
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * CREATE
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Neue Servicemeldungen aus der HomeMatic CCU in der Firestore Collection ioMeldungen anlegen.	
+	 * Vor dem Anlegen wird die Collection ioMeldungen geleert. 
+	 * 
+	 * @param ioMeldungModels n-Servicemeldungen vom Typ ioMeldungModels. 
+	 * @param eventId Aktuelle WorkflowId
+	 * @return Erfolgsmeldung / Fehlermeldung 
+	 *    
+	 ***********************************************************************************************/	
 	public String create(List<IoMeldungModel> ioMeldungModels, String eventId) {
 		
 		try {
@@ -94,11 +115,15 @@ public class IoMeldungService {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * deleteAllDocumentsOfService
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Löschen aller Dokumente der Collection ioMeldungen. 
+	 * 
+	 * @param collection Name der Collection.
+	 * @param batchSize Defaultwert 
+	 * @param eventId Aktuelle WorkflowId
+	 *    
+	 ***********************************************************************************************/	
 	private void deleteAllDocumentsOfService(CollectionReference collection, int batchSize, String eventId) {
 		
 		try {

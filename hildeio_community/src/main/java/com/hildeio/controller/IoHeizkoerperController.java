@@ -24,6 +24,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Heizkoerper")
 public class IoHeizkoerperController {
 
+	/***********************************************************************************************
+	 * 
+	 * Instanzvariable für Service
+	 *    
+	 ***********************************************************************************************/
 	public IoHeizkoerperService ioHeizkoerperService;
 
 	
@@ -44,6 +49,9 @@ public class IoHeizkoerperController {
 	 * DeviceToken fuer ein Topic registrieren.
 	 * 
 	 * @param ioHeizkoerperModel Steuerungswerte von der HomeMatic CCU.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/		
 	@PutMapping("/updateHeizkoerper2Firestore")
@@ -56,6 +64,9 @@ public class IoHeizkoerperController {
 	/***********************************************************************************************
 	 * 
 	 * Zyklischer Aufruf der Wochenplan-Logik durch die HomeMatic CCU.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 * 
 	 ***********************************************************************************************/		
 	@PutMapping("/checkWochenplan")

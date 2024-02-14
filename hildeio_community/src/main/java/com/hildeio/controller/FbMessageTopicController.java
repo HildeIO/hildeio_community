@@ -24,6 +24,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Firebase Messaging Topic")
 public class FbMessageTopicController {
 
+	/***********************************************************************************************
+	 * 
+	 * Instanzvariable für Service
+	 *    
+	 ***********************************************************************************************/
 	public FbMessageTopicService fbMessageTopicService;
 
 	
@@ -44,6 +49,7 @@ public class FbMessageTopicController {
 	 * DeviceToken fuer ein Topic registrieren
 	 * 
 	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	@PutMapping("/subscribeTopic")
@@ -58,6 +64,7 @@ public class FbMessageTopicController {
 	 * DeviceToken aus einem Topic entfernen.
 	 * 
 	 * @param fbMessageTopicModel DeviceTokens und Topic.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	@PutMapping("/unsubscribeTopic")
@@ -72,6 +79,7 @@ public class FbMessageTopicController {
 	 * Information in welchen Topics ein DeviceToken registriert ist und Zeitpunkt der Registrierung.
 	 * 
 	 * @param deviceToken registrationToken eines MobileDevices.
+	 * @return Erfolgsmeldung / Fehlermeldung
 	 *    
 	 ***********************************************************************************************/
 	@GetMapping("/getTopicsOfDevice")

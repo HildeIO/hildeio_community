@@ -24,6 +24,11 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 @Tag(name = "Schaltaktoren")
 public class IoSchaltaktorController {
 
+	/***********************************************************************************************
+	 * 
+	 * Instanzvariable für Service
+	 *    
+	 ***********************************************************************************************/
 	public IoSchaltaktorService ioSchaltaktorService;
 
 	
@@ -44,6 +49,9 @@ public class IoSchaltaktorController {
 	 * Speichert den Schaltaktor-Zustand (ein/aus) in Firestore-Collection ioSchaltaktoren.
 	 * 
 	 * @param ioSchaltaktorModel Steuerungswerte von der HomeMatic CCU.
+	 * @return Erfolgsmeldung / Fehlermeldung
+	 * @throws InterruptedException Erforderliche Exception.
+	 * @throws ExecutionException Erforderliche Exception.
 	 *    
 	 ***********************************************************************************************/		
 	@PutMapping("/updateSchaltaktor2Firestore")
