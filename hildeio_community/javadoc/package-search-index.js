@@ -1,1 +1,1 @@
-packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.hildeio"},{"l":"com.hildeio.controller"},{"l":"com.hildeio.firebase"},{"l":"com.hildeio.homematic"},{"l":"com.hildeio.luididb"},{"l":"com.hildeio.models"},{"l":"com.hildeio.services"}];updateSearchResults();
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"com.hildeio.firebase"}];updateSearchResults();

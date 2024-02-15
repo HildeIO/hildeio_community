@@ -19,65 +19,92 @@ import com.hildeio.Log4Hilde;
 import com.hildeio.services.IoSchaltaktorService;
 import com.hildeio.services.IoHeizkoerperService;
 
+/***********************************************************************************************
+ * 
+ * Firebase Konfigurationen
+ *    
+ ***********************************************************************************************/
 public class FbConfiguration {
 
+	/***********************************************************************************************
+	 * 
+	 * Dependency Injection auf Log4Hilde
+	 *    
+	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-	
 
-	/* ***************
-	  GLOBALS 
-	  **************** */
-	
+	/***********************************************************************************************
+	 * KONSTANTE fuer Firebase-Authentifizieurng
+	 ***********************************************************************************************/	
 	private static final String SERVICE_ACCOUNT_FILE = "serviceAccountKey.json";
+
 	
+	/***********************************************************************************************
+	 * KONSTANTE fuer FCM PushNotifications
+	 ***********************************************************************************************/	
 	private static final String FIREBASE_API_URL = "https://fcm.googleapis.com/v1/projects/{myProjectId}/messages:send";
 
+	
+	/***********************************************************************************************
+	 * KONSTANTE zur Firebase
+	 ***********************************************************************************************/	
 	private static final String FIRESTORE_URL = "https://{myProjectId}.firebaseio.com";
 		
+	
+	/***********************************************************************************************
+	 * KONSTANTE fuer Firebase Messaging
+	 ***********************************************************************************************/	
 	private static final String MESSAGING_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
 	
+	
+	/***********************************************************************************************
+	 * KONSTANTE fuer FCM Topic Info 
+	 ***********************************************************************************************/	
 	private static final String FIREBASE_DEVICE_TOKEN_INFO_URL = "https://iid.googleapis.com/iid/info/{deviceToken}?details=true";	
 
+	
+	/***********************************************************************************************
+	 * KONSTANTE fuer Firebase Messaging Scopes
+	 ***********************************************************************************************/	
 	private static final String[] SCOPES = { MESSAGING_SCOPE };	
 
 	
-	/* ***************
-	  MESSAGE TOPICS 
-	  **************** */
-
+	/***********************************************************************************************
+	 * KONSTANTE fuer FCM Topic
+	 ***********************************************************************************************/	
 	private static final String LOGGING_TOPIC = "MeinIoTest";
 
+	
+	/***********************************************************************************************
+	 * KONSTANTE fuer FCM Topic
+	 ***********************************************************************************************/	
 	private static final String KONTAKT_TOPIC = "Fenster";
 
 
-	/* ***************
-	  MÜLLTERMIN
-	  **************** */
-	
-	private static final String CURRENT_ICS_FILE = "/var/www/html/HILDE/files/veichtederpointweglandshut.ics";
-	
-	private static final String TEMP_ICS_FILE = "/var/www/html/HILDE/files/temp_veichtederpointweglandshut.ics";
-	
-	
-	/* ***************
-	  COLLECTIONS
-	  **************** */
-	
+	/***********************************************************************************************
+	 * KONSTANTE zur Firebase Collection
+	 ***********************************************************************************************/	
 	private static final String COLLECTION_SCHALTAKTOREN = "ioSchaltaktoren";
 
+	
+	/***********************************************************************************************
+	 * KONSTANTE zur Firebase Collection
+	 ***********************************************************************************************/	
 	private static final String COLLECTION_HEIZKOERPER = "ioHeizkoerper";
 
 
 	
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * getServiceAccount
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Laden der Firebase-Authentifizieurngsdatei.
+	 * 
+	 * @return Firebase-Authentifizieurngsdatei
+	 * 
+	 ***********************************************************************************************/	
 	public FileInputStream getServiceAccount() {
 		
 		try {
@@ -94,11 +121,14 @@ public class FbConfiguration {
 		}		
 	}
 	
-	/* *********************************************************************************************
-	 *
-	 * getProjectId
+
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Ermitteln der ProjectId aus der Firebase-Authentifizieurngsdatei.
+	 * 
+	 * @return ProjectId
+	 * 
+	 ***********************************************************************************************/	
 	private String getProjectId() {
 						
 		try {
@@ -127,11 +157,13 @@ public class FbConfiguration {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * getLoggingTopic
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * FCM Logging-Topic
+	 * 
+	 * @return Vollstaendige URI
+	 * 
+	 ***********************************************************************************************/	
 	public String getLoggingTopic() {
 		
 		try {
@@ -147,11 +179,13 @@ public class FbConfiguration {
 	}
 
 				
-	/* *********************************************************************************************
-	 *
-	 * getKontaktTopic
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Kontakt-Topic
+	 * 
+	 * @return Vollstaendige URI
+	 * 
+	 ***********************************************************************************************/	
 	public String getKontaktTopic() {
 		
 		try {
@@ -165,53 +199,15 @@ public class FbConfiguration {
 		}		
 
 	}
-
-					
-	/* *********************************************************************************************
-	 *
-	 * getCurrentIcsFile
+				
+			
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
-	public String getCurrentIcsFile() {
-		
-		try {
-			
-			return CURRENT_ICS_FILE;
-			
-		} catch(Exception exception) {
-			
-			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
-			return null;
-		}		
-
-	}
-
-			
-	/* *********************************************************************************************
-	 *
-	 * getTempIcsFile
+	 * FCM PushNotification 
 	 * 
-	 * ********************************************************************************************/		
-	public String getTempIcsFile() {
-		
-		try {
-			
-			return TEMP_ICS_FILE;
-			
-		} catch(Exception exception) {
-			
-			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
-			return null;
-		}		
-
-	}
-
-			
-	/* *********************************************************************************************
-	 *
-	 * getFirebaseApiUrl
+	 * @return Vollstaendige URI
 	 * 
-	 * ********************************************************************************************/		
+	 ***********************************************************************************************/	
 	public String getFirebaseApiUrl() {
 		
 		try {
@@ -227,11 +223,14 @@ public class FbConfiguration {
 	}
 
 		
-	/* *********************************************************************************************
-	 *
-	 * getDeviceTokenInfo
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * DeviceToken Info
+	 *  
+	 * @param deviceToken Token von SmartDevice
+	 * @return Vollstaendige URI
+	 * 
+	 ***********************************************************************************************/	
 	public String getDeviceTokenInfo(String deviceToken) {
 		
 		try {
@@ -246,11 +245,13 @@ public class FbConfiguration {
 	}
 
 	
-	/* *********************************************************************************************
-	 *
-	 * getFirestoreUrl
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Firestore
+	 *  
+	 * @return Vollstaendige URI
+	 * 
+	 ***********************************************************************************************/	
 	public String getFirestoreUrl() {
 		
 		try {
@@ -266,11 +267,13 @@ public class FbConfiguration {
 	}
 
 	
-	/* *********************************************************************************************
-	 *
-	 * getCollectionNames
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Registrieren der Firebase Collections für den EventHub. 
+	 * 
+	 * @return Liste der definierten Collectionsnamen.
+	 * 
+	 ***********************************************************************************************/	
 	public ArrayList<String> getCollectionNames(){
 		
 		try {
@@ -290,11 +293,16 @@ public class FbConfiguration {
 	}
 	
 
-	/* *********************************************************************************************
-	 *
-	 * dispatch
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/			
+	 * Verteilen der Objektdaten an jeweilige Service-Instanz. 
+	 * 
+	 * @param queryDocumentSnapshot Geaendertes Collection-Dokument.
+	 * @param collectionName Name der Firebase Collection.
+	 * @param log4Hilde Aktuelle Logging-Instanz.
+	 * @param eventId Aktuelle WorkflowId.
+	 * 
+	 ***********************************************************************************************/	
 	public void dispatch(QueryDocumentSnapshot queryDocumentSnapshot, String collectionName, Log4Hilde log4Hilde, String eventId) {
 		
 		try {
@@ -315,11 +323,14 @@ public class FbConfiguration {
 		
 	}
 	
-	/* *********************************************************************************************
-	*
-	* getAccessToken
-	* 
-	* ********************************************************************************************/			
+	/***********************************************************************************************
+	 * 
+	 * Generierung Bearer-Token.
+	 * 
+	 * @return Token
+	 * @throws IOException Erforderliche Exception.
+	 * 
+	 ***********************************************************************************************/	
 	public static String getAccessToken() throws IOException {
 		
 		GoogleCredentials googleCredentials = GoogleCredentials

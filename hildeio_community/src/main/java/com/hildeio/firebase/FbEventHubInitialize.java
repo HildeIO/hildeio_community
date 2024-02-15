@@ -5,13 +5,25 @@ import org.json.JSONObject;
 import com.google.firebase.cloud.FirestoreClient;
 import com.hildeio.Log4Hilde;
 
+/***********************************************************************************************
+ * 
+ * Klasse FbEventHubInitialize
+ *    
+ ***********************************************************************************************/
 public class FbEventHubInitialize {
 
-	/* *********************************************************************************************
-	 *
-	 * createEventHub
+	
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Neue EventHub-Instanz erzeugen. 
+	 * Bei Re-Initialisierung wird die alte Instanz zuerst bereinigt.
+	 * 
+	 * @param eventHub Ist null bei Neu-Instanz bzw. alte Instanz bei Re-Initialisierung.
+	 * @param collectionName Firebase Collection-Name.
+	 * @param config Firebase Konfigurationsdatei
+	 * @param log4Hilde Aktuelle Logging-Instanz.
+	 * 
+	 ***********************************************************************************************/	
 	public static void createEventHub(FbEventHub eventHub, String collectionName, FbConfiguration config, Log4Hilde log4Hilde) {
 		
 		try {

@@ -14,18 +14,48 @@ import com.google.cloud.firestore.QuerySnapshot;
 import com.google.firebase.database.annotations.Nullable;
 import com.hildeio.Log4Hilde;
 
+/***********************************************************************************************
+ * 
+ * Klasse FbEventHub
+ *    
+ ***********************************************************************************************/
 public class FbEventHub implements EventListener<QuerySnapshot> {
+
 	
+	/***********************************************************************************************
+	 * Firebase Konfigurationsdatei
+	 ***********************************************************************************************/	
 	private FbConfiguration config;
+
+	
+	/***********************************************************************************************
+	 * Firestore Collection
+	 ***********************************************************************************************/	
 	private CollectionReference collectionReference;
+
+	
+	/***********************************************************************************************
+	 * Registrierung des Listeners der Collection 
+	 ***********************************************************************************************/	
 	private ListenerRegistration registration;
+
+	
+	/***********************************************************************************************
+	 * Logging-Instanz 
+	 ***********************************************************************************************/	
 	private Log4Hilde log4Hilde;
 	
-	/* *********************************************************************************************
-	 *
-	 * EventHub
+	
+	
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Konstruktor
+	 * 
+	 * @param collectionReference Firbase Collection
+	 * @param config Firebase Konfigurationsdatei
+	 * @param log4Hilde Aktuelle Logging-Instanz.
+	 *    
+	 ***********************************************************************************************/	
 	public FbEventHub(CollectionReference collectionReference, FbConfiguration config, Log4Hilde log4Hilde) {
 		
 		try {
@@ -49,11 +79,11 @@ public class FbEventHub implements EventListener<QuerySnapshot> {
 	}
 	
 	
-	/* *********************************************************************************************
-	 *
-	 * registerListner
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Firestore Collection für Dokumentaenderungen registrieren.
+	 * 
+	 ***********************************************************************************************/	
     public void registerListner(){
     	
     	try {
@@ -74,11 +104,11 @@ public class FbEventHub implements EventListener<QuerySnapshot> {
     }
     
     
-	/* *********************************************************************************************
-	 *
-	 * unregisterListener
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Unregister der Firestore Collection bei Dokumentaenderungen.
+	 * 
+	 ***********************************************************************************************/	
     public void unregisterListener(){
     	
     	try {
@@ -99,11 +129,14 @@ public class FbEventHub implements EventListener<QuerySnapshot> {
     }    
     
     
-	/* *********************************************************************************************
-	 *
-	 * onEvent
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Event bei Dokumentaenderungen in der Firestore Collection.
+	 * 
+	 * @param querySnapshot Collection-Dokumente.
+	 * @param firestoreException Enthält Exception-Objekt im Fehlerfall.
+	 * 
+	 ***********************************************************************************************/	
     public void onEvent(@Nullable QuerySnapshot querySnapshot, @Nullable FirestoreException firestoreException) {
 
     	try {    		
@@ -130,11 +163,14 @@ public class FbEventHub implements EventListener<QuerySnapshot> {
     }
 
     
-	/* *********************************************************************************************
-	 *
-	 * getDocumentChanges
+	/***********************************************************************************************
 	 * 
-	 * ********************************************************************************************/		
+	 * Geänderte Dokumente mittels dispatch() dem jeweiligen Service zustellen. 
+	 * 
+	 * @param snapshots Collection-Dokumente.
+	 * @param eventId Aktuelle WorkflowId.
+	 * 
+	 ***********************************************************************************************/	
     private void getDocumentChanges(@Nullable QuerySnapshot snapshots, String eventId) {
 
     	try {    		
