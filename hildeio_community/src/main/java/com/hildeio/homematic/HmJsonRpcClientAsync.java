@@ -14,15 +14,25 @@ import com.hildeio.Log4Hilde;
 import com.hildeio.models.HmRequestModel;
 import com.hildeio.models.HmResponseModel;
 
-
+/***********************************************************************************************
+ * 
+ * Klasse HmJsonRpcClientAsync
+ *    
+ ***********************************************************************************************/
 public class HmJsonRpcClientAsync {
 
 	
-	/* *********************************************************************************************
-	*
-	* doRequest
-	* 
-	* ********************************************************************************************/
+	/***********************************************************************************************
+	 * 
+	 * Ausfuehren des asynchronen HTTP-Requests an die JSON-RPC API der HomeMatic CCU.
+	 * 
+	 * @param hmRequestModel Request-Model mit den Daten des HomeMatic Aktors.
+	 * @param log4Hilde Aktuelle Logging-Instanz.
+	 * @param eventId Aktuelle WorkflowId.
+	 * @throws Exception Erforderliche Exception.
+	 * @return Response von der HomeMatic CCU.
+	 * 
+	 ***********************************************************************************************/	
 	public static HmResponseModel doRequest(final HmRequestModel hmRequestModel, Log4Hilde log4Hilde, String eventId) throws Exception {
 
 		final CloseableHttpAsyncClient httpClient = HttpAsyncClients.createDefault();

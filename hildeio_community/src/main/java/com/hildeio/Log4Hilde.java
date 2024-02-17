@@ -21,10 +21,12 @@ import com.hildeio.models.Log4HildePushNotificationModel;
 
 /***********************************************************************************************
  * 
- * <P>Peristierung der Logging-Informationen in einer relationale Datenbank. HildeIO verwendet den Datenbankserver MariaDB. 
- * Die Logging-Datensaetze werden in der Tabelle [log4hilde] der Datenbank [luidi_db] gespeichert.</p>   
- * Hinweis:<br>
- * Alternativ zur MariaDB kann auch ein anderes relationales Datenbanksystem verwendet werden, wie PostgreSQL oder MSSQL.
+ * Peristierung der Logging-Informationen in einer relationale Datenbank. HildeIO verwendet den 
+ * Datenbankserver MariaDB. Die Logging-Datensaetze werden in der Tabelle [log4hilde] der 
+ * Datenbank [luidi_db] gespeichert.   
+ * Hinweis:
+ * Alternativ zur MariaDB kann auch ein anderes relationales Datenbanksystem verwendet werden, 
+ * wie PostgreSQL oder MSSQL.
  *    
  ***********************************************************************************************/
 @Component
@@ -38,10 +40,10 @@ public class Log4Hilde {
 		
 	/***********************************************************************************************
 	* 
-	* <p style="color:green;font-weight:bold;size:28px">INFO-LEVEL</p>
+	* INFO-LEVEL
 	* 
 	* Persistieren der aktuellen Objekte aus den Methoden in der Tabelle [luidi_db].[log4hilde].
-	* 	* 
+	* 
 	* @param logpoint Logging-Punkt in der Methode
 	* @param meldung Enhaelt die Werte von Variablen und/oder Model-Properties 
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
@@ -124,7 +126,7 @@ public class Log4Hilde {
 
 	/***********************************************************************************************
 	* 
-	* <p style="color:red;font-weight:bold;size:28px">ERROR-LEVEL</p>
+	* ERROR-LEVEL
 	* 
 	* Oeffentliche doErrorLog()-Methode im Falle einer Exception. 
 	*  
@@ -161,39 +163,18 @@ public class Log4Hilde {
 	
 	/***********************************************************************************************
 	* 
-	* <p>Enthaelt der Parameter modusName den Wert 'debug', wird geprueft, ob INFO-LEVEL aktiv ist.
+	* Enthaelt der Parameter modusName den Wert 'debug', wird geprueft, ob INFO-LEVEL aktiv ist.
 	* Standardmaessig ist das INFO-LEVEL aktiv. Um das INFO-LEVEL zu deaktivieren muss in 
-	* der Tabelle [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren:</p>  
-	* <p>
-	* <table>
-	*  <tr>
-	*   <td style="background-color:#e9ecee;">modusName</td>
-	*   <td style="background-color:#e9ecee;">modus_value</td>
-	*  </tr>
-	*  <tr>
-	*   <td style="border: 1px solid #e9ecee;font-width:bold;">debug</td>
-	*   <td style="border: 1px solid #e9ecee;font-width:bold;">0</td>
-	*  </tr>
-	* </table>
-	* </p>
+	* der Tabelle [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren: 
 	* 
-	* <p>Enthaelt der Parameter modusName den Wert 'exceptionPush' wird bei einer Exception geprueft,
+	* modusName = debug / modus_value = 0
+	* 
+	* Enthaelt der Parameter modusName den Wert 'exceptionPush' wird bei einer Exception geprueft,
 	* ob PushNotification verschicken wird. Standardmaessig ist bei einer Exception die PushNotification aktiv.
 	* Um das das Versenden einer PushNotification zu deaktivieren muss in der Tabelle 
-	* [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren:</p>
-	* <p>
-	* <table>
-	*  <tr>
-	*   <td style="background-color:#e9ecee;">modusName</td>
-	*   <td style="background-color:#e9ecee;">modus_value</td>
-	*  </tr>
-	*  <tr>
-	*   <td style="border: 1px solid #e9ecee;font-width:bold;">exceptionPush</td>
-	*   <td style="border: 1px solid #e9ecee;font-width:bold;">0</td>
-	*  </tr>
-	* </table>
-	* </p>
+	* [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren:
 	* 
+	* modusName = exceptionPush / modus_value = 0
 	* 
 	* @param modusName debug | exceptionPush
 	* @return true | false
