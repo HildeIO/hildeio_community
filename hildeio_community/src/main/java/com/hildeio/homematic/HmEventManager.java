@@ -11,7 +11,7 @@ import com.hildeio.models.HmRequestModel;
 import com.hildeio.models.HmResponseModel;
 
 /***********************************************************************************************
- * Klasse HmEventManager2
+ * Klasse HmEventManager
  ***********************************************************************************************/
 public class HmEventManager {
 	
