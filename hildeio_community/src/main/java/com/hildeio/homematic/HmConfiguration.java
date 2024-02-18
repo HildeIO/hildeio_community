@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import com.hildeio.HildeIoApplication;
 import com.hildeio.Log4Hilde;
-
+ 
 /***********************************************************************************************
  * HomeMatic Konfigurationen
  ***********************************************************************************************/
