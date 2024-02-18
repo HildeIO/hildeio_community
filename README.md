@@ -1,8 +1,10 @@
 <h1>Erstelle Dein IoT-Gateway für die HomeMatic</h1>
 <p>Mit dem HildeIO Framework kannst du mit wenigen Codeanpassungen die Zustandsänderungen deiner HomeMatic-Aktoren an Google Firebase übertragen.</p>
 <p>Steuere deine HomeMatic-Aktoren aus dem Internet. HildeIO überträgt die Änderungen in Echtzeit an die HomeMatic CCU.</p>
-<p>Aktor -> CCU -> HildeIO -> Firebase</p>
-<p>Firebase -> HildeIO -> CCU -> Aktor</p>
+<p>
+  Aktor -> CCU -> HildeIO -> Firebase<br>
+  Firebase -> HildeIO -> CCU -> Aktor
+</p>
 
 <p>Das HildeIO Framework setzt auf Standardprodukte:</p>
 <ol>
