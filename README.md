@@ -8,6 +8,7 @@
   <li><b>Google Firebase (Messaging & Firestore)</b></li>
   <li><b>MariaDB</b></li>
 </ol>
+<hr>
 <p>
   Eine ausführliche Dokumentation (DE) mit Beispiel-UseCases findet du unter:<br>
   >><a href="https://www.hildeio.com">https://www.hildeio.com</a><<
