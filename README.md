@@ -21,3 +21,8 @@
 <hr>
 <p>In HildeIO ist Swagger integriert. Damit lassen sich die REST-Services ohne zusätzliche Software testen.</p>
 <p>Zur ausführlichen Dokumentation enthält HildeIO entsprechende Javadoc-Tags.</p>
+<hr>
+<p>
+  Beispiel-Programme (HM-Skript) für die HomeMatic CCU findest du im Repository<br>
+  >><a href="https://github.com/HildeIO/homematic_scripts">homematic_scripts</a><<
+</p>
