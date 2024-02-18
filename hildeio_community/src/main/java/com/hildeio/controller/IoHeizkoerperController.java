@@ -15,9 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
- * 
  * REST-API zur Heizkoerper-Steuerung.
- *    
  ***********************************************************************************************/
 @RestController
 @RequestMapping("/heizkoerper")
@@ -25,34 +23,26 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class IoHeizkoerperController {
 
 	/***********************************************************************************************
-	 * 
 	 * Instanzvariable für Service
-	 *    
 	 ***********************************************************************************************/
 	public IoHeizkoerperService ioHeizkoerperService;
 
-	
 	/***********************************************************************************************
-	 * 
 	 * Konstruktor
 	 * 
 	 * @param ioHeizkoerperService Logik-Instanz der API. 
-	 *    
 	 ***********************************************************************************************/
 	public IoHeizkoerperController(IoHeizkoerperService ioHeizkoerperService) {
 		this.ioHeizkoerperService = ioHeizkoerperService;
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * DeviceToken fuer ein Topic registrieren.
 	 * 
 	 * @param ioHeizkoerperModel Steuerungswerte von der HomeMatic CCU.
 	 * @return Erfolgsmeldung / Fehlermeldung
 	 * @throws InterruptedException Erforderliche Exception.
 	 * @throws ExecutionException Erforderliche Exception.
-	 *    
 	 ***********************************************************************************************/		
 	@PutMapping("/updateHeizkoerper2Firestore")
 	@Operation(description = "Speichert Ist-Temperatur, Soll-Temperatur und Betriebsart in Firestore-Collection ioHeizkoerper")
@@ -60,14 +50,11 @@ public class IoHeizkoerperController {
 		return ioHeizkoerperService.updateHeizkoerper2Firestore(ioHeizkoerperModel, UUID.randomUUID().toString());
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Zyklischer Aufruf der Wochenplan-Logik durch die HomeMatic CCU.
 	 * @return Erfolgsmeldung / Fehlermeldung
 	 * @throws InterruptedException Erforderliche Exception.
 	 * @throws ExecutionException Erforderliche Exception.
-	 * 
 	 ***********************************************************************************************/		
 	@PutMapping("/checkWochenplan")
 	@Operation(description = "Für zyklischen Aufruf der Wochenplan-Logik durch die HomeMatic")

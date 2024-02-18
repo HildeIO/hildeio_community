@@ -18,39 +18,28 @@ import com.hildeio.homematic.HmEventManager;
 import com.hildeio.models.IoSchaltaktorModel;
 
 /***********************************************************************************************
- * 
  * Service zur Zustands-Aktualisierung der Schaltaktoren 
- *    
  ***********************************************************************************************/
 @Service
 public class IoSchaltaktorService {
 
 	/***********************************************************************************************
-	 * 
 	 * KONSTANTE fuer Firestore Collections ioSchaltaktoren
-	 *    
 	 ***********************************************************************************************/	
 	final static String COLLECTION = "ioSchaltaktoren";
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf Log4Hilde
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Geaenderte Werte von der HomeMatic CCU an => Firestore-Collection ioSchaltaktorModel uebertragen.
-	 * 
 	 * 
 	 * @param ioSchaltaktorModel Werte des Schaltaktors 
 	 * @param eventId Aktuelle WorkflowId
 	 * @return Aenderungsdatum (String) des Schaltaktor-Dokuments in ioSchaltaktoren. 
-	 *    
 	 ***********************************************************************************************/	
 	public String updateSchaltaktor2Firestore(IoSchaltaktorModel ioSchaltaktorModel, String eventId) {
 		
@@ -104,16 +93,13 @@ public class IoSchaltaktorService {
 		}		
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Ermitteln der aktuellen Werte des zu aenderden Dokuments. Bestimmte Felder werden in
 	 * dem ioSchaltaktorModel wieder gesetzt.
 	 * 
 	 * @param ioSchaltaktorModel Werte des Schaltaktors. 
 	 * @param eventId Aktuelle WorkflowId
 	 * @return aktualisiertes ioSchaltaktorModel. 
-	 *    
 	 ***********************************************************************************************/	
 	private IoSchaltaktorModel updateModel(IoSchaltaktorModel ioSchaltaktorModel, String eventId) {
 
@@ -154,16 +140,13 @@ public class IoSchaltaktorService {
 		}		
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Geaenderte Werte aus der Firestore-Collection ioSchaltaktoren werden an => die HomeMatic CCU  
 	 * uebertragen.
 	 * 
 	 * @param document Werte des ioSchaltaktoren-Dokuments.
 	 * @param log4Hilde Logging-Instanz 
 	 * @param eventId Aktuelle WorkflowId
-	 *    
 	 ***********************************************************************************************/	
 	public void update2Homematic(QueryDocumentSnapshot document, Log4Hilde log4Hilde, String eventId) {
 		

@@ -6,16 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 
 /***********************************************************************************************
- * 
  * Model Log4HildeModusModel
- *    
  ***********************************************************************************************/
 @Setter
 @Getter
 @Entity
 @Table(name = "log4hildeModusModel")
 public class Log4HildeModusModel {
-
 	
 	/***********************************************************************************************
 	 * eindeutige Id  in der Tabelle [luidi_db].[log4hilde_modus_model]
@@ -23,7 +20,6 @@ public class Log4HildeModusModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
-
 	
 	/***********************************************************************************************
 	 * Variablenname
@@ -34,5 +30,4 @@ public class Log4HildeModusModel {
 	 * Variablenwert
 	 ***********************************************************************************************/
 	private Boolean modusValue;
-
 }

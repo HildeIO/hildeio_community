@@ -16,9 +16,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
- * 
  * REST-API zum Anzeigen von Servicemeldungn der HomeMatic CCU.
- *    
  ***********************************************************************************************/
 @RestController
 @RequestMapping("/meldung")
@@ -26,34 +24,26 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class IoMeldungController {
 
 	/***********************************************************************************************
-	 * 
 	 * Instanzvariable für Service
-	 *    
 	 ***********************************************************************************************/
 	public IoMeldungService ioMeldungService;
 
-	
 	/***********************************************************************************************
-	 * 
 	 * Konstruktor
 	 * 
 	 * @param ioMeldungService Logik-Instanz der API. 
-	 *    
 	 ***********************************************************************************************/	
 	public IoMeldungController(IoMeldungService ioMeldungService) {
 		this.ioMeldungService = ioMeldungService;
 	}
-	 
 
 	/***********************************************************************************************
-	 * 
 	 * Neue Servicemeldung aus der HomeMatic in Firestore-Collection ioMeldungen anlegen.
 	 * 
 	 * @param ioMeldungModels Name, Nachricht, Kategorie und Timestamp.
 	 * @return Erfolgsmeldung / Fehlermeldung
 	 * @throws InterruptedException Erforderliche Exception.
 	 * @throws ExecutionException Erforderliche Exception.
-	 *    
 	 ***********************************************************************************************/			
 	@PostMapping("/create")
 	@Operation(description = "Neue Servicemeldung aus der HomeMatic in Firestore-Collection ioMeldungen anlegen")

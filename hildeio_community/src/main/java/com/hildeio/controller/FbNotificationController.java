@@ -21,9 +21,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
- * 
  * REST-API zum Versenden von FCM PushNotifications.
- *    
  ***********************************************************************************************/
 @RestController
 @RequestMapping("/fcmNotification")
@@ -31,29 +29,22 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class FbNotificationController {
 	
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection für Service
-	 *    
 	 ***********************************************************************************************/
 	@Autowired
 	FbNotificationService fcmNotificationService;
 
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf Log4Hilde
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
-
 	
 	/***********************************************************************************************
-	 * 
 	 * Versenden einer PushNotification an ein bestimmtes Topic.
 	 * 
 	 * @param fbMessageModel TopicName, Message-Title und Message-Body.
 	 * @return Erfolgsmeldung / Fehlermeldung
-	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Topic")
 	@Operation(description = "Versenden einer Push-Nachricht an ein bestimmtes Topic")
@@ -62,15 +53,12 @@ public class FbNotificationController {
 		fbMessageModel.setTokenTopicDevice("/topics/" + fbMessageModel.getTokenTopicDevice().trim());		
 		return this.send(fbMessageModel);
 	}	
-
 	
 	/***********************************************************************************************
-	 * 
 	 * Versenden einer PushNotification an ein bestimmtes MobileDevice.
 	 * 
 	 * @param fbMessageModel DeviceToken, Message-Title und Message-Body.
 	 * @return Erfolgsmeldung / Fehlermeldung
-	 *    
 	 ***********************************************************************************************/
 	@PostMapping("/send2Device")
 	@Operation(description = "Versenden einer Push-Nachricht an ein bestimmtes MobileDevice")
@@ -78,15 +66,12 @@ public class FbNotificationController {
 		
 		return this.send(fbMessageModel);
 	}	
-			
 	
 	/***********************************************************************************************
-	 * 
 	 * Ausfuehren der zentralen Send-Methode.
 	 * 
 	 * @param fbMessageModel DeviceToken bzw. Topic, Message-Title und Message-Body.
 	 * @return Erfolgsmeldung / Fehlermeldung
-	 *    
 	 ***********************************************************************************************/
 	private ResponseEntity<String> send(FbMessageModel fbMessageModel) {
 		

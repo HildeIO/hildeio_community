@@ -5,15 +5,12 @@ import lombok.Getter;
 import lombok.Setter;
 
 /***********************************************************************************************
- * 
  * Model FbMessageModel
- *    
  ***********************************************************************************************/
 @Getter
 @Setter
 @Schema(description = "Model-Klasse für zum Erstellen eines MessageTopics bzw. hinzufügen/entfernen eines registrationTokens")
 public class FbMessageModel {
-
 	
 	/***********************************************************************************************
 	 * Topic oder MobileDevice-Token
@@ -21,13 +18,11 @@ public class FbMessageModel {
 	@Schema(description =  "Topic oder MobileDevice-Token", example = "'FensterTopic' oder 'A91b.....KqVLG'")
 	private String tokenTopicDevice;
 	
-	
 	/***********************************************************************************************
 	 * Titel der Nachricht
 	 ***********************************************************************************************/
 	@Schema(description = "Titel der Nachricht", example = "Geöffnete Fenster")
 	private String title;
-
 
 	/***********************************************************************************************
 	 * Beschreibung

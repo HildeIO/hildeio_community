@@ -9,24 +9,18 @@ import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.info.Info;
 
 /***********************************************************************************************
- * 
  * Swagger Konfigurationsdatei 
  *    
- * <p>
- * Unter http://<b><i>{deine_hildeio_url}</i>/api/swagger-ui/index.html</b> ist die Swagger-API verfuegbar.
- * </p> 
- *
+ * Unter http://{deine_hildeio_url}/api/swagger-ui/index.html ist die Swagger-API verfuegbar.
  ***********************************************************************************************/
 @OpenAPIDefinition
 @Configuration
 public class SpringdocConfiguration {
 
 	/***********************************************************************************************
-	 * 
 	 * Erstellung der Swagger-Dokumentation.
 	 * 
 	 * @return Swagger-Dokumentation
-	 *    
 	 ***********************************************************************************************/
 	  @Bean
 	  public OpenAPI springShopOpenAPI() {

@@ -24,55 +24,40 @@ import com.hildeio.models.IoVariableModel;
 import com.hildeio.models.Log4HildePushNotificationModel;
 
 /***********************************************************************************************
- * 
  * Service zur Zustands-Aktualisierung der Tuer- und Fensterkontakte 
- *    
  ***********************************************************************************************/
 @Service
 public class IoKontaktService {
 
 	/***********************************************************************************************
-	 * 
 	 * KONSTANTE fuer Firestore Collections ioKontakte
-	 *    
 	 ***********************************************************************************************/	
 	final static String COLLECTION = "ioKontakte";
 	
 	
 	/***********************************************************************************************
-	 * 
 	 * KONSTANTE fuer Firestore Collections ioKontakte
-	 *    
 	 ***********************************************************************************************/	
 	final static String COLLECTION_VARIABLEN = "ioVariablen";
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf Log4Hilde
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf FCM NotificationService
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	FbNotificationService fcmNotificationService;
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Neuen Tuer- bzw. Fensterkontakt anlegen.	 
 	 * 
 	 * @param ioKontakteModel Aktuelle Werte des Kontakts von der HomeMatic CCU. 
 	 * @param eventId Aktuelle WorkflowId
 	 * @return Aenderungsdatum (String) des Kontakt-Dokuments in ioKontakte. 
-	 *    
 	 ***********************************************************************************************/	
 	public String createKontakt(IoKontaktModel ioKontakteModel, String eventId) {
 		
@@ -124,15 +109,12 @@ public class IoKontaktService {
 		}
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Rueckgabe der Werte des Tuer- bzw. Fensterkontakts.	 
 	 * 
 	 * @param iseId Channel-ID Kontakts
 	 * @param eventId Aktuelle WorkflowId
 	 * @return ioKontaktModel Werte des Tuer- bzw. Fensterkontakts 
-	 *    
 	 ***********************************************************************************************/	
 	public IoKontaktModel getKontakt(String iseId, String eventId) {
 
@@ -179,13 +161,11 @@ public class IoKontaktService {
 	}
 
 	/***********************************************************************************************
-	 * 
 	 * Tuer- bzw. Fensterkontakt aktualisieren.	 
 	 * 
 	 * @param ioKontakteModel Werte des Kontakts. 
 	 * @param eventId Aktuelle WorkflowId
 	 * @return Aenderungsdatum (String) des Kontakt-Dokuments in ioKontakte. 
-	 *    
 	 ***********************************************************************************************/	
 	public String updateKontakt(IoKontaktModel ioKontakteModel, String eventId) {
 		
@@ -239,16 +219,13 @@ public class IoKontaktService {
 		}		
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Ermitteln der aktuellen Werte des zu aenderden Dokuments. Bestimmte Felder werden in
 	 * dem ioKontakteModel wieder gesetzt.
 	 * 
 	 * @param ioKontakteModel Werte des KontaktAktors. 
 	 * @param eventId Aktuelle WorkflowId
 	 * @return aktualisiertes ioKontaktModel. 
-	 *    
 	 ***********************************************************************************************/	
 	private IoKontaktModel updateModel(IoKontaktModel ioKontakteModel, String eventId) {
 
@@ -288,15 +265,12 @@ public class IoKontaktService {
 		}		
 	}		
 	
-
 	/***********************************************************************************************
-	 * 
 	 * Rueckgabe der Werte des Tuer- bzw. Fensterkontakts.	 
 	 * 
 	 * @param iseId Channel-ID Kontakts
 	 * @param eventId Aktuelle WorkflowId
 	 * @return Loeschdatum (String) des Kontakt-Dokuments in ioKontakte. 
-	 *    
 	 ***********************************************************************************************/	
 	public String deleteKontakt(String iseId, String eventId) {
 	

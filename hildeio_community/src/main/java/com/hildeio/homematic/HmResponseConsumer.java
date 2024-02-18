@@ -14,38 +14,30 @@ import com.hildeio.Log4Hilde;
 import com.hildeio.models.HmResponseModel;
 
 /***********************************************************************************************
- * 
  * Klasse HmResponseConsumer
- *    
  ***********************************************************************************************/
 public class HmResponseConsumer extends AsyncCharConsumer<Boolean> {
 	  
-	
 	/***********************************************************************************************
 	 * KONSTANTE fuer Response von der HomeMatic CCU.
 	 ***********************************************************************************************/	
 	private HmResponseModel hmResponseModel;
-	
 	
 	/***********************************************************************************************
 	 * Logging-Instanz 
 	 ***********************************************************************************************/	
 	private Log4Hilde log4Hilde;
 	
-	
 	/***********************************************************************************************
 	 * Aktuelle WorkflowId 
 	 ***********************************************************************************************/	
 	private String eventId;
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Konstruktor
 	 * 
 	 * @param eventId Aktuelle WorkflowId.
 	 * @param log4Hilde Aktuelle Logging-Instanz.
-	 *    
 	 ***********************************************************************************************/	
 	public HmResponseConsumer(Log4Hilde log4Hilde, String eventId) {		
 		
@@ -53,25 +45,19 @@ public class HmResponseConsumer extends AsyncCharConsumer<Boolean> {
 		this.eventId = eventId;
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Zuruecksetzen von response.
 	 * 
 	 * @param response Response von der HomeMatic CCU.
-	 *    
 	 ***********************************************************************************************/	
     @Override
     protected void onResponseReceived(final HttpResponse response) {}
-
     
 	/***********************************************************************************************
-	 * 
 	 * Response wird verarbeitet.
 	 * 
 	 * @param charBuffer Response-Nachricht von der HomeMatic CCU.
 	 * @param ioControl Wird nicht weiter benoetigt.
-	 *    
 	 ***********************************************************************************************/	
     @Override
     protected void onCharReceived(final CharBuffer charBuffer, final IOControl ioControl)
@@ -105,33 +91,24 @@ public class HmResponseConsumer extends AsyncCharConsumer<Boolean> {
 		}		    	
     }
 
-
 	/***********************************************************************************************
-	 *
 	 * Keine zusaetzliche Aenderung erforderlich.
-	 * 
 	 ***********************************************************************************************/	
     @Override
     protected void releaseResources() {}
 
-
 	/***********************************************************************************************
-	 *
 	 * Keine zusaetzliche Aenderung erforderlich.
-	 * 
 	 ***********************************************************************************************/	
     @Override
     protected Boolean buildResult(final HttpContext context) {    	
       return Boolean.TRUE;
     }
     
-    
 	/***********************************************************************************************
-	 *
 	 * Bereitstellung des Response-Models. 
 	 * 
 	 * @return hmResponseModel Wird von HmJsonRpcClientAsync aufgerufen. 
-	 * 
 	 ***********************************************************************************************/	
     public HmResponseModel getHmResponseModel() {
     	return hmResponseModel;

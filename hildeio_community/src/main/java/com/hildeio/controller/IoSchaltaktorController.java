@@ -15,9 +15,7 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
- * 
  * REST-API zur Aenderung der Stati von Schaltaktoren.
- *    
  ***********************************************************************************************/
 @RestController
 @RequestMapping("/schaltaktor")
@@ -25,34 +23,26 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 public class IoSchaltaktorController {
 
 	/***********************************************************************************************
-	 * 
 	 * Instanzvariable für Service
-	 *    
 	 ***********************************************************************************************/
 	public IoSchaltaktorService ioSchaltaktorService;
 
-	
 	/***********************************************************************************************
-	 * 
 	 * Konstruktor
 	 * 
 	 * @param ioSchaltaktorService Logik-Instanz der API.
-	 *    
 	 ***********************************************************************************************/	
 	public IoSchaltaktorController(IoSchaltaktorService ioSchaltaktorService) {
 		this.ioSchaltaktorService = ioSchaltaktorService;
 	}
-	
 
 	/***********************************************************************************************
-	 * 
 	 * Speichert den Schaltaktor-Zustand (ein/aus) in Firestore-Collection ioSchaltaktoren.
 	 * 
 	 * @param ioSchaltaktorModel Steuerungswerte von der HomeMatic CCU.
 	 * @return Erfolgsmeldung / Fehlermeldung
 	 * @throws InterruptedException Erforderliche Exception.
 	 * @throws ExecutionException Erforderliche Exception.
-	 *    
 	 ***********************************************************************************************/		
 	@PutMapping("/updateSchaltaktor2Firestore")
 	@Operation(description = "Speichert den Schaltaktor-Zustand (ein/aus) in Firestore-Collection ioSchaltaktoren")

@@ -12,28 +12,20 @@ import com.hildeio.Log4Hilde;
 import javax.annotation.PostConstruct;
 
 /***********************************************************************************************
- * 
  * Firebase Startklasse 
- *    
  ***********************************************************************************************/
 @Service
 public class FirebaseInitialize {
-
 	
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf Log4Hilde
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
-
 	
 	/***********************************************************************************************
-	 * 
 	 * In der Firebase Startmethode wird die Verindung zum Firebase-Projekt hergestellt.
 	 * Danach wird für jede registrierte Firebase Collection eine eigene EventHub-Instanz erstellt.
-	 *    
 	 ***********************************************************************************************/	
 	@PostConstruct
 	public void initialize() {

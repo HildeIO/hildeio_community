@@ -18,16 +18,13 @@ import com.hildeio.services.FbNotificationService;
 import com.hildeio.models.Log4HildeModusModel;
 import com.hildeio.models.Log4HildePushNotificationModel;
 
-
 /***********************************************************************************************
- * 
  * Peristierung der Logging-Informationen in einer relationale Datenbank. HildeIO verwendet den 
  * Datenbankserver MariaDB. Die Logging-Datensaetze werden in der Tabelle [log4hilde] der 
  * Datenbank [luidi_db] gespeichert.   
  * Hinweis:
  * Alternativ zur MariaDB kann auch ein anderes relationales Datenbanksystem verwendet werden, 
  * wie PostgreSQL oder MSSQL.
- *    
  ***********************************************************************************************/
 @Component
 public class Log4Hilde {
@@ -39,7 +36,6 @@ public class Log4Hilde {
 	Log4HildeModusRepository log4HildeModusRepository;
 		
 	/***********************************************************************************************
-	* 
 	* INFO-LEVEL
 	* 
 	* Persistieren der aktuellen Objekte aus den Methoden in der Tabelle [luidi_db].[log4hilde].
@@ -48,7 +44,6 @@ public class Log4Hilde {
 	* @param meldung Enhaelt die Werte von Variablen und/oder Model-Properties 
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
 	* @param eventId Alle Loggings eines Workflows erhalten eine eindeutige Id
-	* 
 	**********************************************************************************************/	
 	public void doInfoLog(String logpoint, String meldung, JSONObject json, String eventId) {
 		
@@ -72,9 +67,7 @@ public class Log4Hilde {
 		}
 	}	
 	
-
 	/***********************************************************************************************
-	* 
 	* Persistieren der aktuellen Exception-Objekte in der Tabelle loghHilde der [luidi_db].[log4hilde].
 	*  
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
@@ -82,7 +75,6 @@ public class Log4Hilde {
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
 	* @param eventId Alle Loggings eines Workflows erhalten eine eindeutige Id
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird  
-	* 
 	**********************************************************************************************/	
 	private void doErrorLog(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
 		
@@ -123,9 +115,7 @@ public class Log4Hilde {
 		}
 	}
 
-
 	/***********************************************************************************************
-	* 
 	* ERROR-LEVEL
 	* 
 	* Oeffentliche doErrorLog()-Methode im Falle einer Exception. 
@@ -134,22 +124,18 @@ public class Log4Hilde {
 	* @param exception Enhaelt die Exception-Message der Exception 
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
 	* @param eventId Alle Loggings eines Workflows erhalten eine eindeutige Id
-	* 
 	**********************************************************************************************/	
 	public void doErrorLog(String logpoint, Exception exception, JSONObject json, String eventId) {
 		
 		this.doErrorLog(logpoint, exception, json, eventId, 5);
-	}
-	
+	}	
 	
 	/***********************************************************************************************
-	* 
 	* Zusammenstellen der Logging-Informationen im log4HildeModel.
 	*  
 	* @param log4HildeModel Zu befuellendes log4HildeModel   
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird
 	* @return Vorgefuelltes log4HildeModel   
-	* 
 	**********************************************************************************************/	
 	private Log4HildeModel doLogging(Log4HildeModel log4HildeModel, int history){
 		
@@ -160,9 +146,7 @@ public class Log4Hilde {
 		return log4HildeModel;
 	}
 
-	
 	/***********************************************************************************************
-	* 
 	* Enthaelt der Parameter modusName den Wert 'debug', wird geprueft, ob INFO-LEVEL aktiv ist.
 	* Standardmaessig ist das INFO-LEVEL aktiv. Um das INFO-LEVEL zu deaktivieren muss in 
 	* der Tabelle [luidi_db].[log4hilde_modus_model] folgender Datensatz existieren: 
@@ -178,7 +162,6 @@ public class Log4Hilde {
 	* 
 	* @param modusName debug | exceptionPush
 	* @return true | false
-	* 
 	**********************************************************************************************/	
 	private Boolean checkDebugMode(String modusName) {
 		
@@ -189,24 +172,19 @@ public class Log4Hilde {
 		Log4HildeModusModel modusInstance = modus.get();
 		return modusInstance.getModusValue();
 	}
-
 	
 	/***********************************************************************************************
-	* 
 	* Formattierung des Methoden-Namens. Package-Namen werden entfernt.
 	* 
 	* @param klasse Vollstaendiger Methoden-Name
 	* @return Gekuerzter Methoden-Name
-	* 
 	**********************************************************************************************/	
 	private String getSimpleName(String klasse) {
 		
 		return klasse.substring((klasse.lastIndexOf('.') + 1), klasse.length());
 	}
 	
-	
 	/***********************************************************************************************
-	* 
 	* Fehlermeldung ausgeben.
 	* 
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
@@ -214,7 +192,6 @@ public class Log4Hilde {
 	* @param json Zusaetzliches Logging fuer weitere JSON-Models
 	* @param eventId Alle Loggings eines Workflows erhalten eine eindeutige Id
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird  
-	* 
 	**********************************************************************************************/	
 	private void printError(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
 		
@@ -238,9 +215,7 @@ public class Log4Hilde {
 		}	    
 	}
 	
-	
 	/***********************************************************************************************
-	* 
 	* Zusamenstellen der Fehlerinforamtionen.
 	* 
 	* @param logpoint Ort in der Methode an dem die Exception aufgetreten ist
@@ -249,7 +224,6 @@ public class Log4Hilde {
 	* @param eventId Alle Loggings eines Workflows erhalten eine eindeutige Id
 	* @param history Legt fest wie weit im StackTrace zurueckgegangen wird  
 	* @return Befuellen log4HildeModel   
-	* 
 	**********************************************************************************************/	
 	private Log4HildeModel createExceptionModel(String logpoint, Exception exception, JSONObject json, String eventId, int history) {
 		
@@ -270,5 +244,4 @@ public class Log4Hilde {
 		
 		return log4HildeModel;		
 	}
-	
 }

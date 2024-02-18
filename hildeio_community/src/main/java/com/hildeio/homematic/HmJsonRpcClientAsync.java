@@ -15,15 +15,11 @@ import com.hildeio.models.HmRequestModel;
 import com.hildeio.models.HmResponseModel;
 
 /***********************************************************************************************
- * 
  * Klasse HmJsonRpcClientAsync
- *    
  ***********************************************************************************************/
 public class HmJsonRpcClientAsync {
-
 	
 	/***********************************************************************************************
-	 * 
 	 * Ausfuehren des asynchronen HTTP-Requests an die JSON-RPC API der HomeMatic CCU.
 	 * 
 	 * @param hmRequestModel Request-Model mit den Daten des HomeMatic Aktors.
@@ -31,7 +27,6 @@ public class HmJsonRpcClientAsync {
 	 * @param eventId Aktuelle WorkflowId.
 	 * @throws Exception Erforderliche Exception.
 	 * @return Response von der HomeMatic CCU.
-	 * 
 	 ***********************************************************************************************/	
 	public static HmResponseModel doRequest(final HmRequestModel hmRequestModel, Log4Hilde log4Hilde, String eventId) throws Exception {
 
@@ -104,4 +99,3 @@ public class HmJsonRpcClientAsync {
 		return hmResponseConsumer.getHmResponseModel();		
 	}
 }
-

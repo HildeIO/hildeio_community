@@ -20,90 +20,70 @@ import com.hildeio.services.IoSchaltaktorService;
 import com.hildeio.services.IoHeizkoerperService;
 
 /***********************************************************************************************
- * 
  * Firebase Konfigurationen
- *    
  ***********************************************************************************************/
 public class FbConfiguration {
 
 	/***********************************************************************************************
-	 * 
 	 * Dependency Injection auf Log4Hilde
-	 *    
 	 ***********************************************************************************************/	
 	@Autowired
 	Log4Hilde log4Hilde;
 	
-
 	/***********************************************************************************************
 	 * KONSTANTE fuer Firebase-Authentifizieurng
 	 ***********************************************************************************************/	
 	private static final String SERVICE_ACCOUNT_FILE = "serviceAccountKey.json";
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE fuer FCM PushNotifications
 	 ***********************************************************************************************/	
 	private static final String FIREBASE_API_URL = "https://fcm.googleapis.com/v1/projects/{myProjectId}/messages:send";
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE zur Firebase
 	 ***********************************************************************************************/	
 	private static final String FIRESTORE_URL = "https://{myProjectId}.firebaseio.com";
-		
 	
 	/***********************************************************************************************
 	 * KONSTANTE fuer Firebase Messaging
 	 ***********************************************************************************************/	
 	private static final String MESSAGING_SCOPE = "https://www.googleapis.com/auth/firebase.messaging";
 	
-	
 	/***********************************************************************************************
 	 * KONSTANTE fuer FCM Topic Info 
 	 ***********************************************************************************************/	
 	private static final String FIREBASE_DEVICE_TOKEN_INFO_URL = "https://iid.googleapis.com/iid/info/{deviceToken}?details=true";	
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE fuer Firebase Messaging Scopes
 	 ***********************************************************************************************/	
 	private static final String[] SCOPES = { MESSAGING_SCOPE };	
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE fuer FCM Topic
 	 ***********************************************************************************************/	
 	private static final String LOGGING_TOPIC = "MeinIoTest";
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE fuer FCM Topic
 	 ***********************************************************************************************/	
 	private static final String KONTAKT_TOPIC = "Fenster";
 
-
 	/***********************************************************************************************
 	 * KONSTANTE zur Firebase Collection
 	 ***********************************************************************************************/	
 	private static final String COLLECTION_SCHALTAKTOREN = "ioSchaltaktoren";
-
 	
 	/***********************************************************************************************
 	 * KONSTANTE zur Firebase Collection
 	 ***********************************************************************************************/	
 	private static final String COLLECTION_HEIZKOERPER = "ioHeizkoerper";
-
-
-	
-	
 	
 	/***********************************************************************************************
-	 * 
 	 * Laden der Firebase-Authentifizieurngsdatei.
 	 * 
 	 * @return Firebase-Authentifizieurngsdatei
-	 * 
 	 ***********************************************************************************************/	
 	public FileInputStream getServiceAccount() {
 		
@@ -120,14 +100,12 @@ public class FbConfiguration {
 			return null;
 		}		
 	}
-	
 
 	/***********************************************************************************************
 	 * 
 	 * Ermitteln der ProjectId aus der Firebase-Authentifizieurngsdatei.
 	 * 
 	 * @return ProjectId
-	 * 
 	 ***********************************************************************************************/	
 	private String getProjectId() {
 						
@@ -156,13 +134,10 @@ public class FbConfiguration {
 		}				
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * FCM Logging-Topic
 	 * 
 	 * @return Vollstaendige URI
-	 * 
 	 ***********************************************************************************************/	
 	public String getLoggingTopic() {
 		
@@ -177,14 +152,11 @@ public class FbConfiguration {
 		}		
 
 	}
-
 				
 	/***********************************************************************************************
-	 * 
 	 * Kontakt-Topic
 	 * 
 	 * @return Vollstaendige URI
-	 * 
 	 ***********************************************************************************************/	
 	public String getKontaktTopic() {
 		
@@ -197,16 +169,12 @@ public class FbConfiguration {
 			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
 			return null;
 		}		
-
 	}
 				
-			
 	/***********************************************************************************************
-	 * 
 	 * FCM PushNotification 
 	 * 
 	 * @return Vollstaendige URI
-	 * 
 	 ***********************************************************************************************/	
 	public String getFirebaseApiUrl() {
 		
@@ -219,17 +187,13 @@ public class FbConfiguration {
 			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
 			return null;
 		}		
-
 	}
-
 		
 	/***********************************************************************************************
-	 * 
 	 * DeviceToken Info
 	 *  
 	 * @param deviceToken Token von SmartDevice
 	 * @return Vollstaendige URI
-	 * 
 	 ***********************************************************************************************/	
 	public String getDeviceTokenInfo(String deviceToken) {
 		
@@ -243,14 +207,11 @@ public class FbConfiguration {
 			return null;
 		}		
 	}
-
 	
 	/***********************************************************************************************
-	 * 
 	 * Firestore
 	 *  
 	 * @return Vollstaendige URI
-	 * 
 	 ***********************************************************************************************/	
 	public String getFirestoreUrl() {
 		
@@ -263,16 +224,12 @@ public class FbConfiguration {
 			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
 			return null;
 		}		
-		
 	}
 
-	
 	/***********************************************************************************************
-	 * 
 	 * Registrieren der Firebase Collections für den EventHub. 
 	 * 
 	 * @return Liste der definierten Collectionsnamen.
-	 * 
 	 ***********************************************************************************************/	
 	public ArrayList<String> getCollectionNames(){
 		
@@ -289,19 +246,15 @@ public class FbConfiguration {
 			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
 			return null;
 		}		
-		
 	}
 	
-
 	/***********************************************************************************************
-	 * 
 	 * Verteilen der Objektdaten an jeweilige Service-Instanz. 
 	 * 
 	 * @param queryDocumentSnapshot Geaendertes Collection-Dokument.
 	 * @param collectionName Name der Firebase Collection.
 	 * @param log4Hilde Aktuelle Logging-Instanz.
 	 * @param eventId Aktuelle WorkflowId.
-	 * 
 	 ***********************************************************************************************/	
 	public void dispatch(QueryDocumentSnapshot queryDocumentSnapshot, String collectionName, Log4Hilde log4Hilde, String eventId) {
 		
@@ -320,16 +273,13 @@ public class FbConfiguration {
 			
 			log4Hilde.doErrorLog("EX-01", exception, new JSONObject(), null);
 		}		
-		
 	}
 	
 	/***********************************************************************************************
-	 * 
 	 * Generierung Bearer-Token.
 	 * 
 	 * @return Token
 	 * @throws IOException Erforderliche Exception.
-	 * 
 	 ***********************************************************************************************/	
 	public static String getAccessToken() throws IOException {
 		

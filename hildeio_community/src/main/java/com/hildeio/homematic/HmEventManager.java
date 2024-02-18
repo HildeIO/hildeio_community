@@ -11,40 +11,30 @@ import com.hildeio.models.HmRequestModel;
 import com.hildeio.models.HmResponseModel;
 
 /***********************************************************************************************
- * 
  * Klasse HmEventManager
- *    
  ***********************************************************************************************/
 public class HmEventManager {
-
 	
 	/***********************************************************************************************
 	 * Logging-Instanz 
 	 ***********************************************************************************************/	
 	private Log4Hilde log4Hilde;
 	
-	
-	
 	/***********************************************************************************************
-	 * 
 	 * Konstruktor
 	 * 
 	 * @param log4Hilde Aktuelle Logging-Instanz.
-	 *    
 	 ***********************************************************************************************/	
 	public HmEventManager(Log4Hilde log4Hilde) {
 		
 		this.log4Hilde = log4Hilde;
 	}
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Authentifizierung an der HomeMatic CCU. 
 	 * 
 	 * @param eventId Aktuelle WorkflowId.
 	 * @return Token _session_id_
-	 * 
 	 ***********************************************************************************************/	
 	private String doLogin(String eventId) {
 		
@@ -106,15 +96,12 @@ public class HmEventManager {
 		}		
 	}	
 	
-	
 	/***********************************************************************************************
-	 * 
 	 * Werte an HomeMatic CCU uebertragen. 
 	 * 
 	 * @param hmRfcMethod JSON-RFC Prozedur
 	 * @param hmDataModel Daten des HomeMatic Aktors
 	 * @param eventId Aktuelle WorkflowId.
-	 * 
 	 ***********************************************************************************************/	
 	public void save(String hmRfcMethod, HmDataModel hmDataModel, String eventId) {
 		
@@ -207,12 +194,10 @@ public class HmEventManager {
 	
 
 	/***********************************************************************************************
-	 * 
 	 * Abmelden von der HomeMatic CCU. 
 	 * 
 	 * @param _session_id_ Token _session_id_
 	 * @param eventId Aktuelle WorkflowId.
-	 * 
 	 ***********************************************************************************************/	
 	private void doLogout(String _session_id_, String eventId) {
 		

@@ -6,21 +6,19 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
 /***********************************************************************************************
- * 
  * @author cdr - support@hildeio.com
  * @since 20.01.2024
  * @version 24.1.13
  *
- *
- * <p>Die Startklasse HildeIoApplication erbt von der Klasse SpringBootServletInitializer.<br>
- * Wird HildeIO unter einem Apache Tomcat 10 (.war) ausgefuehrt ist SpringBootServletInitializer erforderlich.</p>
+ * Die Startklasse HildeIoApplication erbt von der Klasse SpringBootServletInitializer.
+ * Wird HildeIO unter einem Apache Tomcat 10 (.war) ausgefuehrt ist SpringBootServletInitializer erforderlich.
  * 
- * <p>Zum Deployen der war-Datei unter Linux muss der Apache Tomcat 10 neu gestartet werden.</p> 
- * <p>
- * <b>sudo systemctl stop tomcat</b><br>
- * <b>sudo systemctl status tomcat</b><br> 
- * <b>sudo systemctl start tomcat</b><br>
- * </p>
+ * Zum Deployen der war-Datei unter Linux muss der Apache Tomcat 10 neu gestartet werden. 
+ * 
+ * sudo systemctl stop tomcat
+ * sudo systemctl status tomcat 
+ * sudo systemctl start tomcat
+ * 
  * 
  ***********************************************************************************************/
 @SpringBootApplication
