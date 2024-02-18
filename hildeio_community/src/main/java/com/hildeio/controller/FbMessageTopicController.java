@@ -16,7 +16,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 
 /***********************************************************************************************
  * 
- * REST-API zur Administration der FCM Topics.
+ * REST-API zur Administration der FCM Topics. 
  *    
  ***********************************************************************************************/
 @RestController
