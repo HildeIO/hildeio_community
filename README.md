@@ -23,6 +23,6 @@
 <p>Zur ausführlichen Dokumentation enthält HildeIO entsprechende Javadoc-Tags.</p>
 <hr>
 <p>
-  Beispiel-Programme (HM-Skript) für die HomeMatic CCU findest du im Repository<br>
+  Beispiel-Programme (HM-Skript) für die HomeMatic CCU zu den einzelnen REST-Services findest du im Repository<br>
   >><a href="https://github.com/HildeIO/homematic_scripts">homematic_scripts</a><<
 </p>
