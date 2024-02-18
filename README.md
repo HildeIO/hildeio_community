@@ -10,5 +10,5 @@
 </ol>
 <p>
   Eine ausführliche Dokumentation (DE) mit Beispiel-UseCases findet du unter:<br>
-  >><a href="http://www.hildeio.com">http://www.hildeio.com</a><<
+  <center>>><a href="https://www.hildeio.com">https://www.hildeio.com</a><<</center>
 </p>
