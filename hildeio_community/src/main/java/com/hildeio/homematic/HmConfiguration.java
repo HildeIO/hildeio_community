@@ -77,7 +77,7 @@ public class HmConfiguration {
 	 * @return KeyValue
 	 * @throws IOException Erforderliche Exception.
 	 ***********************************************************************************************/	
-	public String getHmValue(String key) throws IOException {
+	private String getHmValue(String key) throws IOException {
 		
 		StringBuilder stringBuilder = new StringBuilder();
 	    Reader reader = new InputStreamReader(getHmConfigFile(), "UTF-8");
