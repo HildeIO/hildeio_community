@@ -4,7 +4,7 @@ import org.json.JSONObject;
 
 import com.google.firebase.cloud.FirestoreClient;
 import com.hildeio.Log4Hilde;
-
+ 
 /***********************************************************************************************
  * Klasse FbEventHubInitialize
  ***********************************************************************************************/

@@ -10,7 +10,7 @@ import com.google.firebase.FirebaseOptions;
 import com.hildeio.Log4Hilde;
 
 import javax.annotation.PostConstruct;
-
+ 
 /***********************************************************************************************
  * Firebase Startklasse 
  ***********************************************************************************************/

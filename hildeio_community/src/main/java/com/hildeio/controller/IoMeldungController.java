@@ -14,7 +14,7 @@ import com.hildeio.services.IoMeldungService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+ 
 /***********************************************************************************************
  * REST-API zum Anzeigen von Servicemeldungn der HomeMatic CCU.
  ***********************************************************************************************/

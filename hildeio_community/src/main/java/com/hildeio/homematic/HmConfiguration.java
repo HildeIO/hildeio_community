@@ -50,16 +50,11 @@ public class HmConfiguration {
 	private static final String RFC_INTERFACE_SET_VALUE = "Interface.setValue";
 
 	/***********************************************************************************************
-	 * KONSTANTE fuer JSON-RPC zum Setzen des Werts einer Systemvariable vom Type bool.
-	 ***********************************************************************************************/	
-	private static final String RFC_SYS_VAR_SET_BOOL = "SysVar.setBool";
-	
-	/***********************************************************************************************
 	 * Laden der HomeMatic-Authentifizieurngsdatei.
 	 * 
 	 * @return HomeMatic-Authentifizieurngsdatei
 	 ***********************************************************************************************/	
-	public FileInputStream getHmConfigFile() {
+	private FileInputStream getHmConfigFile() {
 		
 		try {
 			
@@ -152,16 +147,6 @@ public class HmConfiguration {
 		return RFC_INTERFACE_SET_VALUE;
 	}
 
-	/***********************************************************************************************
-	 * JSON-RPC zum Setzen des Werts einer Systemvariable vom Type bool.
-	 * 
-	 * @return JSON-RPC Prozedur
-	 ***********************************************************************************************/	
-	public String getRfcSysVarSetBool() {
-		
-		return RFC_SYS_VAR_SET_BOOL;
-	}
-	
 	/***********************************************************************************************
 	 * JSON-RPC zum Beenden einer Sitzung.
 	 * 

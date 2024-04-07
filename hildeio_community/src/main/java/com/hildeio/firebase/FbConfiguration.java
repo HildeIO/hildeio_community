@@ -80,6 +80,14 @@ public class FbConfiguration {
 	 ***********************************************************************************************/	
 	private static final String COLLECTION_HEIZKOERPER = "ioHeizkoerper";
 	
+	/* -->  deine KONSTANTE zur neuen Firebase Collection
+	 
+		private static final String COLLECTION_XYZ = "ioXyz";
+				 
+	<-- */
+	
+	
+	
 	/***********************************************************************************************
 	 * Laden der Firebase-Authentifizieurngsdatei.
 	 * 
@@ -239,6 +247,12 @@ public class FbConfiguration {
 			routes.add(COLLECTION_SCHALTAKTOREN);
 			routes.add(COLLECTION_HEIZKOERPER);
 			
+		/* -->  deine COLLECTION_XYZ registieren:
+		 
+			routes.add(COLLECTION_XYZ);
+						 
+		<-- */
+			
 			return routes;
 			
 		} catch(Exception exception) {
@@ -267,6 +281,14 @@ public class FbConfiguration {
 				case COLLECTION_HEIZKOERPER:	
 					new IoHeizkoerperService().update2Homematic(queryDocumentSnapshot, log4Hilde, eventId);
 					break;
+					
+			/* --> deine COLLECTION_XYZ an die IoXyzService zustellen
+			 
+				case COLLECTION_XYZ:	
+					new IoXyzService().update2Homematic(queryDocumentSnapshot, log4Hilde, eventId);
+					break;
+			<-- */
+					
 			}
 			
 		} catch(Exception exception) {

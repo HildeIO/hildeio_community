@@ -13,7 +13,7 @@ import com.hildeio.services.IoHeizkoerperService;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-
+ 
 /***********************************************************************************************
  * REST-API zur Heizkoerper-Steuerung.
  ***********************************************************************************************/
