@@ -44,7 +44,9 @@ public class FbMessageTopicService {
 			
 			TopicManagementResponse response = FirebaseMessaging.getInstance().subscribeToTopic(
 					registrationToken, fbMessageTopicModel.getTopicName());
-			return response.getSuccessCount() + " DeviceToken " + registrationToken + " wurde dem Topic " + fbMessageTopicModel.getTopicName() + " hinzugefügt.";
+			return response.getSuccessCount() + 
+					" DeviceToken " + registrationToken + 
+					" wurde dem Topic " + fbMessageTopicModel.getTopicName() + " hinzugefügt.";
 			
 		} catch(Exception exception) {
 			
@@ -67,7 +69,9 @@ public class FbMessageTopicService {
 			
 			TopicManagementResponse response = FirebaseMessaging.getInstance().unsubscribeFromTopic(
 					registrationToken, fbMessageTopicModel.getTopicName());
-			return response.getSuccessCount() + " DeviceToken " + registrationToken + " wurde von dem Topic " + fbMessageTopicModel.getTopicName() + " entfernt.";
+			return response.getSuccessCount() + 
+					" DeviceToken " + registrationToken + 
+					" wurde von dem Topic " + fbMessageTopicModel.getTopicName() + " entfernt.";
 			
 		} catch(Exception exception) {
 			

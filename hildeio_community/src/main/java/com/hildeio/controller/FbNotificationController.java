@@ -87,7 +87,12 @@ public class FbNotificationController {
 					);				
 			
 			Log4HildePushNotificationModel pushNotification = 
-					fcmNotificationService.sendPushNotification(fbMessageModel.getTokenTopicDevice(), fbMessageModel.getTitle(), fbMessageModel.getBody(), eventId);
+					fcmNotificationService.sendPushNotification(
+							fbMessageModel.getTokenTopicDevice(), 
+							fbMessageModel.getTitle(), 
+							fbMessageModel.getBody(), 
+							eventId
+							);
 			
 			this.log4Hilde.doInfoLog(
 					"02-pushNotification", 
